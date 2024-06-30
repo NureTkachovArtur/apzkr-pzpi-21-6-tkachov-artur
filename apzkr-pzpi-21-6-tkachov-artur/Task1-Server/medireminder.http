@@ -1,0 +1,6 @@
+@medireminder_HostAddress = http://localhost:5023
+
+GET {{medireminder_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
