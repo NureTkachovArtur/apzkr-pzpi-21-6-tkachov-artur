@@ -31,6 +31,11 @@ namespace medireminder.Repository
                 .FirstOrDefault();
         }
 
+        public ICollection<PatientDoctor> GetPatientDoctors()
+        {
+            return _context.PatientDoctors.ToList();
+        }
+
         public bool PatientDoctorExists(int patientId, int doctorId)
         {
             return _context.PatientDoctors.Any(e => e.PatientId == patientId && e.DoctorId == doctorId);

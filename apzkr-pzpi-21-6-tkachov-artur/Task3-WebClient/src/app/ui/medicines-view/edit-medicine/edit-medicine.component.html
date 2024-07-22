@@ -1,0 +1,82 @@
+<app-header></app-header>
+
+<div class="card mb-3" *ngIf="loaded; else stillLoading">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Назва</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.name">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Опис</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.description">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Інструкція</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.instruction">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Термін придатності</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="datetime-local" class="form-control" [(ngModel)]="changes.expirationDate">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Доза</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input #dosage="ngModel"
+               name="dosage"
+               [(ngModel)]="changes.dosage"
+               type="number"
+               min="0"
+               id="middleNameInput2"
+               class="form-control" />
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Кількість</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input #quantity="ngModel"
+               name="quantity"
+               [(ngModel)]="changes.quantity"
+               type="number"
+               min="0"
+               id="middleNameInput2"
+               class="form-control" />
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <a (click)="saveChanges()" class="btn btn-info">Зберегти</a>
+        <a (click)="getBack()" class="btn btn-info" style="margin-left: 15px;">Скасувати</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

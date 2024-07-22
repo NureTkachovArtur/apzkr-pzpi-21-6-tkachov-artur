@@ -224,6 +224,9 @@ namespace medireminder.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ProfilePictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -273,16 +276,19 @@ namespace medireminder.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MedicationScheduleId"));
 
-                    b.Property<DateTime>("MedicationEndDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("DaysLeft")
+                        .HasColumnType("int");
+
+                    b.Property<float>("DosesPerDay")
+                        .HasColumnType("real");
+
+                    b.Property<int>("EveryNDay")
+                        .HasColumnType("int");
 
                     b.Property<int>("MedicationIntervalMinutes")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("MedicationStartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("MedicationTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("MedicineId")
@@ -305,35 +311,6 @@ namespace medireminder.Migrations
                     b.ToTable("MedicationSchedules");
                 });
 
-            modelBuilder.Entity("medireminder.Models.MedicationStatistics", b =>
-                {
-                    b.Property<int>("MedicationStatisticsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MedicationStatisticsId"));
-
-                    b.Property<DateTime>("MedicationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MedicineId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("MissedDose")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MedicationStatisticsId");
-
-                    b.HasIndex("MedicineId");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("MedicationStatistics");
-                });
-
             modelBuilder.Entity("medireminder.Models.Medicine", b =>
                 {
                     b.Property<int>("MedicineId")
@@ -348,8 +325,8 @@ namespace medireminder.Migrations
                     b.Property<float>("Dosage")
                         .HasColumnType("real");
 
-                    b.Property<DateOnly>("ExpirationDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Instruction")
                         .HasColumnType("nvarchar(max)");
@@ -484,6 +461,36 @@ namespace medireminder.Migrations
                     b.ToTable("PatientTrustees");
                 });
 
+            modelBuilder.Entity("medireminder.Models.ScheduleEvent", b =>
+                {
+                    b.Property<int>("ScheduleEventId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ScheduleEventId"));
+
+                    b.Property<bool>("Activated")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MedicationScheduleId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("MedicationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("MissedDose")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PastNeededTime")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ScheduleEventId");
+
+                    b.HasIndex("MedicationScheduleId");
+
+                    b.ToTable("ScheduleEvents");
+                });
+
             modelBuilder.Entity("medireminder.Models.SmartDevice", b =>
                 {
                     b.Property<int>("SmartDeviceId")
@@ -492,7 +499,18 @@ namespace medireminder.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SmartDeviceId"));
 
-                    b.Property<int>("PatientId")
+                    b.Property<DateTime?>("ActivatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("AuthenticationToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int?>("PatientId")
                         .HasColumnType("int");
 
                     b.Property<int>("SmartDeviceTypeId")
@@ -625,9 +643,9 @@ namespace medireminder.Migrations
                         .IsRequired();
 
                     b.HasOne("medireminder.Models.SmartDevice", "SmartDevice")
-                        .WithMany("MedicationSchedules")
+                        .WithMany()
                         .HasForeignKey("SmartDeviceId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Medicine");
@@ -635,25 +653,6 @@ namespace medireminder.Migrations
                     b.Navigation("Patient");
 
                     b.Navigation("SmartDevice");
-                });
-
-            modelBuilder.Entity("medireminder.Models.MedicationStatistics", b =>
-                {
-                    b.HasOne("medireminder.Models.Medicine", "Medicine")
-                        .WithMany()
-                        .HasForeignKey("MedicineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("medireminder.Models.Patient", "Patient")
-                        .WithMany("MedicationStatistics")
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Medicine");
-
-                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("medireminder.Models.Medicine", b =>
@@ -739,13 +738,23 @@ namespace medireminder.Migrations
                     b.Navigation("Trustee");
                 });
 
+            modelBuilder.Entity("medireminder.Models.ScheduleEvent", b =>
+                {
+                    b.HasOne("medireminder.Models.MedicationSchedule", "MedicationSchedule")
+                        .WithMany("ScheduleEvents")
+                        .HasForeignKey("MedicationScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MedicationSchedule");
+                });
+
             modelBuilder.Entity("medireminder.Models.SmartDevice", b =>
                 {
                     b.HasOne("medireminder.Models.Patient", "Patient")
                         .WithMany("SmartDevices")
                         .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("medireminder.Models.SmartDeviceType", "SmartDeviceType")
                         .WithMany("SmartDevices")
@@ -772,6 +781,11 @@ namespace medireminder.Migrations
                     b.Navigation("PatientDoctors");
                 });
 
+            modelBuilder.Entity("medireminder.Models.MedicationSchedule", b =>
+                {
+                    b.Navigation("ScheduleEvents");
+                });
+
             modelBuilder.Entity("medireminder.Models.MessageType", b =>
                 {
                     b.Navigation("Messages");
@@ -780,8 +794,6 @@ namespace medireminder.Migrations
             modelBuilder.Entity("medireminder.Models.Patient", b =>
                 {
                     b.Navigation("MedicationSchedules");
-
-                    b.Navigation("MedicationStatistics");
 
                     b.Navigation("Medicines");
 
@@ -792,11 +804,6 @@ namespace medireminder.Migrations
                     b.Navigation("PatientTrustees");
 
                     b.Navigation("SmartDevices");
-                });
-
-            modelBuilder.Entity("medireminder.Models.SmartDevice", b =>
-                {
-                    b.Navigation("MedicationSchedules");
                 });
 
             modelBuilder.Entity("medireminder.Models.SmartDeviceType", b =>

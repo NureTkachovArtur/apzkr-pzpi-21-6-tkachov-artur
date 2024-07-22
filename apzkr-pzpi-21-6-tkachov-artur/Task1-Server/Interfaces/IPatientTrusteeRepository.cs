@@ -4,6 +4,7 @@ namespace medireminder.Interfaces
 {
     public interface IPatientTrusteeRepository
     {
+        ICollection<PatientTrustee> GetPatientTrustees();
         PatientTrustee GetPatientTrustee(int patientId, int trusteeId);
         bool PatientTrusteeExists(int patientId, int trusteeId);
         bool CreatePatientTrustee(PatientTrustee patientTrustee);

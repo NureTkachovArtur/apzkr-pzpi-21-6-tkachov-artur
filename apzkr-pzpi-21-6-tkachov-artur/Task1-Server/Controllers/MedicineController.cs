@@ -68,7 +68,7 @@ namespace medireminder.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Doctor,Patient")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public IActionResult CreateMedicine([FromBody] MedicineDto medicineCreate)
@@ -99,7 +99,7 @@ namespace medireminder.Controllers
         }
 
         [HttpPut("{medicineId}")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Doctor,Patient")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -125,7 +125,7 @@ namespace medireminder.Controllers
         }
 
         [HttpDelete("{medicineId}")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Doctor,Patient")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

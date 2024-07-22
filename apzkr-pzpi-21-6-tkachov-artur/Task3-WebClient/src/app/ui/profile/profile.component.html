@@ -1,0 +1,134 @@
+<app-header></app-header>
+
+<div class="main-body" *ngIf="userLoaded; else stillLoading">
+  <div class="row gutters-sm">
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex flex-column align-items-center text-center">
+            <img
+                 style="cursor: pointer;"
+                 [src]="getUserProfilePicture()"
+                 alt="photo"
+                 class="rounded-circle"
+                 width="150"
+                 height="150"
+                 (click)="onProfilePictureClick()">
+            <input
+                type="file"
+                id="profilePictureInput"
+                style="display: none;"
+                (change)="onFileSelected($event)">
+            <div class="mt-3">
+              <h4>{{ user.applicationUser.userName }}</h4>
+              <!--<p class="text-secondary mb-1">user.companyName</p>
+              <p class="text-muted font-size-sm">{ user.address }</p>-->
+              <hr />
+              <button (click)="logout()" class="btn btn-outline-primary">Вийти</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+
+      <div *ngIf="!editingProfile; else editProfile" class="card mb-3">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Повне ім'я</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.fullName }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Email</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.applicationUser.email }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Телефон</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              +(38){{ user.applicationUser.phoneNumber }}
+            </div>
+          </div>
+          <hr *ngIf="activeUserRole == 'Patient'">
+          <div *ngIf="activeUserRole == 'Patient'" class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Адреса</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.address }}
+            </div>
+          </div>
+          <hr *ngIf="activeUserRole == 'Patient'">
+          <div *ngIf="activeUserRole == 'Patient'" class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Вік</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.age }}
+            </div>
+          </div>
+          <hr *ngIf="activeUserRole == 'Patient'">
+          <div *ngIf="activeUserRole == 'Patient'" class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Стать</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.genderURK }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div style="text-align: end;" class="col-sm-12">
+              <a (click)="editingProfile = true;" class="btn btn-info">Змінити</a>
+              <a style="margin-left: 15px;" (click)="openModalDialog()" class="btn btn-danger">Видалити</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #editProfile>
+        <app-edit-profile (onSaveEvent)="saveUser($event)"
+                          (onCancelEvent)="cancelEditing()"
+                          [user]="user">
+        </app-edit-profile>
+      </ng-template>
+
+    </div>
+  </div>
+
+  <div *ngIf="showModal" class="modal" style="display: block;" tabindex="-1" role="dialog" (click)="closeModal()">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Попередження</h5>
+          <button style="border: 0px;" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Ви впевнені, що хочете видалити акаунт?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Скасувати</button>
+          <button type="button" class="btn btn-danger" (click)="confirmDelete()">Видалити</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #stillLoading>
+  Still loading...
+</ng-template>

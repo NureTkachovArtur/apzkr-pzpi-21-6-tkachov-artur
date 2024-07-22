@@ -2,6 +2,7 @@
 using medireminder.Dto;
 using medireminder.Interfaces;
 using medireminder.Models;
+using medireminder.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,8 +23,20 @@ namespace medireminder.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<PatientTrustee>))]
+        public IActionResult GetPatientTrustees()
+        {
+            var patientTrustees = _patientTrusteeRepository.GetPatientTrustees();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(patientTrustees);
+        }
+
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Trustee")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public IActionResult CreatePatientTrustee([FromBody] PatientTrusteeDto patientTrusteeCreate)
@@ -44,7 +57,7 @@ namespace medireminder.Controllers
             return Ok(new { ok = true });
         }
 
-        [HttpPut("{patientId, trusteeId}")]
+        [HttpPut("{patientId}/{trusteeId}")]
         [Authorize(Roles = "Administrator")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -72,8 +85,8 @@ namespace medireminder.Controllers
             return Ok(new { ok = true });
         }
 
-        [HttpDelete("{patientId, trusteeId}")]
-        [Authorize(Roles = "Administrator")]
+        [HttpDelete("{patientId}/{trusteeId}")]
+        [Authorize(Roles = "Administrator,Trustee")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

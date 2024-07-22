@@ -11,7 +11,6 @@
         public ICollection<Message> Messages { get; set; }
         public ICollection<Medicine> Medicines { get; set; }
         public ICollection<MedicationSchedule> MedicationSchedules { get; set; }
-        public ICollection<MedicationStatistics> MedicationStatistics { get; set; }
         public ICollection<PatientDoctor> PatientDoctors { get; set; }
         public ICollection<PatientTrustee> PatientTrustees { get; set; }
     }

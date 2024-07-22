@@ -15,6 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddJsonOptions(x =>
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+builder.Services.AddHostedService<MedReminderService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IAdministratorRepository, AdministratorRepository>();
@@ -22,7 +24,7 @@ builder.Services.AddScoped<ITrusteeRepository, TrusteeRepository>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IMedicationScheduleRepository, MedicationScheduleRepository>();
-builder.Services.AddScoped<IMedicationStatisticsRepository, MedicationStatisticsRepository>();
+builder.Services.AddScoped<IScheduleEventRepository, ScheduleEventRepository>();
 builder.Services.AddScoped<IMedicineRepository, MedicineRepository>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<IMessageTypeRepository, MessageTypeRepository>();
@@ -31,6 +33,7 @@ builder.Services.AddScoped<ISmartDeviceTypeRepository, SmartDeviceTypeRepository
 builder.Services.AddScoped<IPatientTrusteeRepository, PatientTrusteeRepository>();
 builder.Services.AddScoped<IPatientDoctorRepository, PatientDoctorRepository>();
 builder.Services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+builder.Services.AddScoped<IFileServiceRepository, FileServiceRepository>();
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -43,6 +46,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<DataContext>()
     .AddSignInManager()
     .AddRoles<IdentityRole>();
+
+builder.Services.AddStackExchangeRedisCache(o =>
+{
+    o.Configuration = builder.Configuration.GetConnectionString("Redis");
+});
 
 builder.Services.AddAuthentication(options =>
 {
@@ -89,6 +97,8 @@ app.UseCors(options =>
 });
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();

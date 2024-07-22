@@ -51,6 +51,14 @@ namespace medireminder.Repository
                 .FirstOrDefault();
         }
 
+        public Trustee GetTrusteeByUID(string uid)
+        {
+            return _context.Trustees
+                .Include(e => e.ApplicationUser)
+                .Where(e => e.ApplicationUser.Id == uid)
+                .FirstOrDefault();
+        }
+
         public ICollection<Trustee> GetTrustees()
         {
             return _context.Trustees

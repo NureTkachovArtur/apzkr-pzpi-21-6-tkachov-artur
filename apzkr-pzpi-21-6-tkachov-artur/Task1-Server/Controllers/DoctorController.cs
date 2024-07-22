@@ -15,15 +15,18 @@ namespace medireminder.Controllers
     [ApiController]
     public class DoctorController : Controller
     {
-        private readonly IDoctorRepository _doctorRepository;
+        private readonly IApplicationUserRepository _applicationUserRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IDoctorRepository _doctorRepository;
         private readonly IMapper _mapper;
 
         public DoctorController(
-            IDoctorRepository doctorRepository,
+            IApplicationUserRepository applicationUserRepository,
             UserManager<ApplicationUser> userManager,
+            IDoctorRepository doctorRepository,
             IMapper mapper)
         {
+            _applicationUserRepository = applicationUserRepository;
             _doctorRepository = doctorRepository;
             _userManager = userManager;
             _mapper = mapper;
@@ -87,7 +90,7 @@ namespace medireminder.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Doctor")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public IActionResult CreateDoctor([FromBody] DoctorDto doctorCreate)
@@ -108,8 +111,45 @@ namespace medireminder.Controllers
             return Ok(new { ok = true });
         }
 
+        [HttpPut("uid/{uid}")]
+        [Authorize(Roles = "Administrator,Doctor")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult UpdateDoctor(string uid, [FromBody] DoctorUpdateDto doctorUpdate)
+        {
+            if (doctorUpdate == null)
+                return BadRequest(ModelState);
+
+            if (!_applicationUserRepository.UserExistsById(uid))
+                return NotFound();
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            Doctor doctor = _doctorRepository.GetDoctorByUID(uid);
+            ApplicationUser account = doctor.ApplicationUser;
+            account.UserName = doctorUpdate.UserName;
+            account.LastName = doctorUpdate.LastName;
+            account.FirstName = doctorUpdate.FirstName;
+            account.MiddleName = doctorUpdate.MiddleName;
+            account.Email = doctorUpdate.Email;
+            account.PhoneNumber = doctorUpdate.PhoneNumber;
+            _userManager.UpdateAsync(account).Wait();
+
+            doctor.ApplicationUser = account;
+
+            if (!_doctorRepository.UpdateDoctor(doctor))
+            {
+                ModelState.AddModelError("", "Something went wrong updating administrator");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok(new { ok = true });
+        }
+
         [HttpPut("{doctorId}")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Doctor")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

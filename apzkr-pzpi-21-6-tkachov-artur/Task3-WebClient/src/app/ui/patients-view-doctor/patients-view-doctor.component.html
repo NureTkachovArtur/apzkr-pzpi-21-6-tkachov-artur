@@ -1,0 +1,105 @@
+<app-header></app-header>
+
+<div *ngIf="loaded; else stillLoading" id="content">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Перелік пацієнтів</h2>
+    <button
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="getPatientsAll()"
+            class="btn btn-info">Додати</button>
+  </div>
+  <div *ngIf="patients.length != 0; else empty" class="container mx-auto mt-4">
+    <div class="row gy-3">
+      <div *ngFor="let patient of patients" @fadeOut class="col-md-3 d-flex align-items-stretch">
+        <div class="card">
+          <img
+               width="250"
+               height="190"
+               [src]="getPatientProfilePicture(patient.applicationUser.profilePictureUrl)"
+               class="card-img-top"
+               alt="patient_photo">
+          <div class="card-body">
+            <h5 class="card-title">{{ patient.applicationUser.userName }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              Прізвище: {{ patient.applicationUser.lastName ? patient.applicationUser.lastName : 'Не вказано' }}<br>
+              Ім'я: {{ patient.applicationUser.firstName ? patient.applicationUser.firstName : 'Не вказано' }}<br>
+              По-батькові: {{ patient.applicationUser.middleName ? patient.applicationUser.middleName : 'Не вказано' }}
+            </h6>
+            <hr />
+            <p class="card-text">
+              Адреса: {{ patient.address }}<br>
+              Телефон: {{ patient.applicationUser.phoneNumber }}<br>
+              Вік: {{ patient.age }}
+            </p>
+            <div class="mt-auto">
+              <a style="color: lightcoral;"
+                 class="btn mr-2"
+                 (click)="deletePatient(patient.patientId)">
+                <i class="fa-solid fa-trash"></i>
+              </a>
+              <a style="color: blueviolet"
+                 class="btn"
+                 [routerLink]="['/medicines', patient.patientId]">
+                <i class="fa-solid fa-capsules"></i>
+              </a>
+              <a style="color: dimgrey"
+                 class="btn"
+                 [routerLink]="['/statistics', patient.patientId]">
+                <i class="fa-solid fa-chart-pie"></i>
+              </a>
+              <a style="color: darkviolet"
+                 class="btn"
+                 [routerLink]="['/schedule', patient.patientId]">
+                <i class="fa-solid fa-calendar"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Створення зв'язку</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Пацієнт</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <select #patientId="ngModel"
+                      name="patientId"
+                      [(ngModel)]="values.patientId"
+                      id="specializationSelect2"
+                      class="form-control"
+                      required>
+                <option value="" disabled selected>Оберіть пацієнта</option>
+                <option *ngFor="let patient of patientsAll;" value="{{ patient.patientId }}">{{ patient.applicationUser.userName }}</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button #closePOSTbutton type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+        <button type="button" (click)="createPatient()" class="btn btn-primary">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>
+
+<ng-template #empty>
+  <div id="centered">Порожньо</div>
+</ng-template>

@@ -1,0 +1,1080 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>medireminder-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">medireminder-client documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CreateMessageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/ui/admin-panel/messages/create-message/create-message.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-create-message</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./create-message.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./create-message.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#loaded" >loaded</a>
+                            </li>
+                            <li>
+                                <a href="#messageTypes" >messageTypes</a>
+                            </li>
+                            <li>
+                                <a href="#patientChosed" >patientChosed</a>
+                            </li>
+                            <li>
+                                <a href="#patients" >patients</a>
+                            </li>
+                            <li>
+                                <a href="#url" >url</a>
+                            </li>
+                            <li>
+                                <a href="#users" >users</a>
+                            </li>
+                            <li>
+                                <a href="#values" >values</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getBack" >getBack</a>
+                            </li>
+                            <li>
+                                <a href="#getMessageTypes" >getMessageTypes</a>
+                            </li>
+                            <li>
+                                <a href="#getPatients" >getPatients</a>
+                            </li>
+                            <li>
+                                <a href="#getUsers" >getUsers</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#saveChanges" >saveChanges</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: HttpClient, router: Router, toastr: ToastrService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBack"></a>
+                    <span class="name">
+                        <span ><b>getBack</b></span>
+                        <a href="#getBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBack()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMessageTypes"></a>
+                    <span class="name">
+                        <span ><b>getMessageTypes</b></span>
+                        <a href="#getMessageTypes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMessageTypes()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPatients"></a>
+                    <span class="name">
+                        <span ><b>getPatients</b></span>
+                        <a href="#getPatients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPatients()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUsers"></a>
+                    <span class="name">
+                        <span ><b>getUsers</b></span>
+                        <a href="#getUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUsers()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveChanges"></a>
+                    <span class="name">
+                        <span ><b>saveChanges</b></span>
+                        <a href="#saveChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveChanges()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loaded"></a>
+                    <span class="name">
+                        <span ><b>loaded</b></span>
+                        <a href="#loaded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="messageTypes"></a>
+                    <span class="name">
+                        <span ><b>messageTypes</b></span>
+                        <a href="#messageTypes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patientChosed"></a>
+                    <span class="name">
+                        <span ><b>patientChosed</b></span>
+                        <a href="#patientChosed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patients"></a>
+                    <span class="name">
+                        <span ><b>patients</b></span>
+                        <a href="#patients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="url"></a>
+                    <span class="name">
+                        <span ><b>url</b></span>
+                        <a href="#url"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.apiBaseUrl</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="users"></a>
+                    <span class="name">
+                        <span ><b>users</b></span>
+                        <a href="#users"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="values"></a>
+                    <span class="name">
+                        <span ><b>values</b></span>
+                        <a href="#values"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/POSTValues.html" target="_self" >POSTValues</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new POSTValues()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/ui/admin-panel/messages/create-message/create-message.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { environment } from &#x27;../../../../../environments/environment&#x27;;
+import { ToastrService } from &#x27;ngx-toastr&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { AuthService } from &#x27;../../../../services/auth/auth.service&#x27;;
+import { POSTValues } from &#x27;./create-message.model&#x27;;
+
+@Component({
+  selector: &#x27;app-create-message&#x27;,
+  templateUrl: &#x27;./create-message.component.html&#x27;,
+  styleUrl: &#x27;./create-message.component.css&#x27;
+})
+export class CreateMessageComponent {
+
+  url: string &#x3D; environment.apiBaseUrl;
+  loaded: boolean &#x3D; false;
+  patientChosed: boolean &#x3D; false;
+  values: POSTValues &#x3D; new POSTValues();
+  patients: any;
+  messageTypes: any;
+  users: any;
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
+  }
+
+  ngOnInit() {
+    this.getPatients();
+    this.getMessageTypes();
+    this.getUsers();
+  }
+
+  saveChanges() {
+    if (!this.values.patientId ||
+      !this.values.createdAt ||
+      !this.values.messageTypeId ||
+      !this.values.receiverId ||
+      !this.values.text) {
+      this.toastr.error(&quot;Не всі поля заповнені&quot;, &quot;Помилка&quot;);
+      return;
+    }
+
+    this.http.post(this.url + &quot;/Messages&quot;, this.values).subscribe(
+      (response: any) &#x3D;&gt; {
+        if (!response.ok) {
+          this.toastr.error(response.message, &quot;Помилка&quot;);
+        } else {
+          this.getBack();
+        }
+      },
+      error &#x3D;&gt; {
+        this.toastr.error(&quot;Проблема сервера, спробуйте пізніше&quot;, &quot;Помилка&quot;);
+      }
+    );
+  }
+
+  getPatients() {
+    this.http.get(this.url + &quot;/Patients&quot;).subscribe(data &#x3D;&gt; {
+      this.patients &#x3D; data;
+    });
+  }
+
+  getMessageTypes() {
+    this.http.get(this.url + &quot;/MessageTypes/&quot;).subscribe(data &#x3D;&gt; {
+      this.messageTypes &#x3D; data;
+    });
+  }
+
+  getUsers() {
+    this.http.get(this.url + &quot;/Accounts/&quot;).subscribe(data &#x3D;&gt; {
+      this.users &#x3D; data;
+      this.loaded &#x3D; true;
+    });
+  }
+
+  getBack() {
+    this.router.navigate([&#x27;/admin-panel&#x27;]);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-header&gt;&lt;/app-header&gt;
+
+&lt;div class&#x3D;&quot;card mb-3&quot; *ngIf&#x3D;&quot;loaded; else stillLoading&quot;&gt;
+  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+    &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+        &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Пацієнт&lt;/h6&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+        &lt;select #patientId&#x3D;&quot;ngModel&quot;
+                name&#x3D;&quot;patientId&quot;
+                [(ngModel)]&#x3D;&quot;values.patientId&quot;
+                id&#x3D;&quot;specializationSelect&quot;
+                class&#x3D;&quot;form-control&quot;
+                required&gt;
+          &lt;option value&#x3D;&quot;&quot; disabled selected&gt;Оберіть пацієнта&lt;/option&gt;
+          &lt;option *ngFor&#x3D;&quot;let patient of patients;&quot; value&#x3D;&quot;{{ patient.patientId }}&quot;&gt;{{ patient.applicationUser.userName }}&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+        &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Тип посилання&lt;/h6&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+        &lt;select #messageTypeId&#x3D;&quot;ngModel&quot;
+                name&#x3D;&quot;messageTypeId&quot;
+                [(ngModel)]&#x3D;&quot;values.messageTypeId&quot;
+                id&#x3D;&quot;specializationSelect1&quot;
+                class&#x3D;&quot;form-control&quot;
+                required&gt;
+          &lt;option value&#x3D;&quot;&quot; disabled selected&gt;Оберіть тип посилання&lt;/option&gt;
+          &lt;option *ngFor&#x3D;&quot;let type of messageTypes;&quot; value&#x3D;&quot;{{ type.messageTypeId }}&quot;&gt;{{ type.name }}&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+        &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Отримувач&lt;/h6&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+        &lt;select #receiverId&#x3D;&quot;ngModel&quot;
+                name&#x3D;&quot;receiverId&quot;
+                [(ngModel)]&#x3D;&quot;values.receiverId&quot;
+                id&#x3D;&quot;specializationSelect2&quot;
+                class&#x3D;&quot;form-control&quot;
+                required&gt;
+          &lt;option value&#x3D;&quot;&quot; disabled selected&gt;Оберіть отримувача&lt;/option&gt;
+          &lt;option *ngFor&#x3D;&quot;let user of users;&quot; value&#x3D;&quot;{{ user.id }}&quot;&gt;{{ user.userName }}&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+        &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Текст&lt;/h6&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+        &lt;textarea type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;values.text&quot;&gt;&lt;/textarea&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+        &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Дата створення&lt;/h6&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+        &lt;input type&#x3D;&quot;datetime-local&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;values.createdAt&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+        &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Діставлено&lt;/h6&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+        &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;form-check-input&quot; [(ngModel)]&#x3D;&quot;values.isReceived&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+        &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Прочитано&lt;/h6&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+        &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;form-check-input&quot; [(ngModel)]&#x3D;&quot;values.isRead&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-sm-12&quot;&gt;
+        &lt;a (click)&#x3D;&quot;saveChanges()&quot; class&#x3D;&quot;btn btn-info&quot;&gt;Створити&lt;/a&gt;
+        &lt;a (click)&#x3D;&quot;getBack()&quot; class&#x3D;&quot;btn btn-info&quot; style&#x3D;&quot;margin-left: 15px;&quot;&gt;Скасувати&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ng-template #stillLoading&gt;
+  Still Loading...
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-header></app-header><div class="card mb-3" *ngIf="loaded; else stillLoading">  <div class="card-body">    <div class="row align-items-center">      <div class="col-sm-3">        <h6 class="mb-0">Пацієнт</h6>      </div>      <div class="col-sm-9 text-secondary">        <select #patientId="ngModel"                name="patientId"                [(ngModel)]="values.patientId"                id="specializationSelect"                class="form-control"                required>          <option value="" disabled selected>Оберіть пацієнта</option>          <option *ngFor="let patient of patients;" value="{{ patient.patientId }}">{{ patient.applicationUser.userName }}</option>        </select>      </div>    </div>    <hr>    <div class="row align-items-center">      <div class="col-sm-3">        <h6 class="mb-0">Тип посилання</h6>      </div>      <div class="col-sm-9 text-secondary">        <select #messageTypeId="ngModel"                name="messageTypeId"                [(ngModel)]="values.messageTypeId"                id="specializationSelect1"                class="form-control"                required>          <option value="" disabled selected>Оберіть тип посилання</option>          <option *ngFor="let type of messageTypes;" value="{{ type.messageTypeId }}">{{ type.name }}</option>        </select>      </div>    </div>    <hr>    <div class="row align-items-center">      <div class="col-sm-3">        <h6 class="mb-0">Отримувач</h6>      </div>      <div class="col-sm-9 text-secondary">        <select #receiverId="ngModel"                name="receiverId"                [(ngModel)]="values.receiverId"                id="specializationSelect2"                class="form-control"                required>          <option value="" disabled selected>Оберіть отримувача</option>          <option *ngFor="let user of users;" value="{{ user.id }}">{{ user.userName }}</option>        </select>      </div>    </div>    <hr>    <div class="row align-items-center">      <div class="col-sm-3">        <h6 class="mb-0">Текст</h6>      </div>      <div class="col-sm-9 text-secondary">        <textarea type="text" class="form-control" [(ngModel)]="values.text"></textarea>      </div>    </div>    <hr>    <div class="row align-items-center">      <div class="col-sm-3">        <h6 class="mb-0">Дата створення</h6>      </div>      <div class="col-sm-9 text-secondary">        <input type="datetime-local" class="form-control" [(ngModel)]="values.createdAt">      </div>    </div>    <hr>    <div class="row align-items-center">      <div class="col-sm-3">        <h6 class="mb-0">Діставлено</h6>      </div>      <div class="col-sm-9 text-secondary">        <input type="checkbox" class="form-check-input" [(ngModel)]="values.isReceived">      </div>    </div>    <hr>    <div class="row align-items-center">      <div class="col-sm-3">        <h6 class="mb-0">Прочитано</h6>      </div>      <div class="col-sm-9 text-secondary">        <input type="checkbox" class="form-check-input" [(ngModel)]="values.isRead">      </div>    </div>    <hr>    <div class="row align-items-center">      <div class="col-sm-12">        <a (click)="saveChanges()" class="btn btn-info">Створити</a>        <a (click)="getBack()" class="btn btn-info" style="margin-left: 15px;">Скасувати</a>      </div>    </div>  </div></div><ng-template #stillLoading>  Still Loading...</ng-template></div>'
+    var COMPONENTS = [{'name': 'AddMedicineComponent', 'selector': 'app-add-medicine'},{'name': 'AdministratorsComponent', 'selector': 'app-administrators'},{'name': 'AdminPanelComponent', 'selector': 'app-admin-panel'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateAdministratorComponent', 'selector': 'app-create-administrator'},{'name': 'CreateDoctorComponent', 'selector': 'app-create-doctor'},{'name': 'CreateMedicationScheduleComponent', 'selector': 'app-create-medication-schedule'},{'name': 'CreateMedicineComponent', 'selector': 'app-create-medicine'},{'name': 'CreateMessageComponent', 'selector': 'app-create-message'},{'name': 'CreateMessageTypeComponent', 'selector': 'app-create-message-type'},{'name': 'CreatePatientComponent', 'selector': 'app-create-patient'},{'name': 'CreatePatientDoctorComponent', 'selector': 'app-create-patient-doctor'},{'name': 'CreatePatientTrusteeComponent', 'selector': 'app-create-patient-trustee'},{'name': 'CreateScheduleEventComponent', 'selector': 'app-create-schedule-event'},{'name': 'CreateSmartDeviceComponent', 'selector': 'app-create-smart-device'},{'name': 'CreateSmartDeviceTypeComponent', 'selector': 'app-create-smart-device-type'},{'name': 'CreateTrusteeComponent', 'selector': 'app-create-trustee'},{'name': 'DoctorsComponent', 'selector': 'app-doctors'},{'name': 'EditMedicineComponent', 'selector': 'app-edit-medicine'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MedicationSchedulesComponent', 'selector': 'app-medication-schedules'},{'name': 'MedicinesComponent', 'selector': 'app-medicines'},{'name': 'MedicinesViewComponent', 'selector': 'app-medicines-view'},{'name': 'MessagesComponent', 'selector': 'app-messages'},{'name': 'MessagesViewComponent', 'selector': 'app-messages-view'},{'name': 'MessageTypesComponent', 'selector': 'app-message-types'},{'name': 'PatientDoctorsComponent', 'selector': 'app-patient-doctors'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'PatientsViewDoctorComponent', 'selector': 'app-patients-view-doctor'},{'name': 'PatientsViewTrusteeComponent', 'selector': 'app-patients-view-trustee'},{'name': 'PatientTrusteesComponent', 'selector': 'app-patient-trustees'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'PutAdministratorComponent', 'selector': 'app-put-administrator'},{'name': 'PutDoctorComponent', 'selector': 'app-put-doctor'},{'name': 'PutMedicationScheduleComponent', 'selector': 'app-put-medication-schedule'},{'name': 'PutMedicineComponent', 'selector': 'app-put-medicine'},{'name': 'PutMessageComponent', 'selector': 'app-put-message'},{'name': 'PutMessageTypeComponent', 'selector': 'app-put-message-type'},{'name': 'PutPatientComponent', 'selector': 'app-put-patient'},{'name': 'PutSmartDeviceComponent', 'selector': 'app-put-smart-device'},{'name': 'PutSmartDeviceTypeComponent', 'selector': 'app-put-smart-device-type'},{'name': 'PutTrusteeComponent', 'selector': 'app-put-trustee'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegisterDoctorFormComponent', 'selector': 'app-register-doctor-form'},{'name': 'RegisterPatientFormComponent', 'selector': 'app-register-patient-form'},{'name': 'RegisterTrusteeFormComponent', 'selector': 'app-register-trustee-form'},{'name': 'ScheduleEventComponent', 'selector': 'app-schedule-events'},{'name': 'ScheduleViewComponent', 'selector': 'app-schedule-view'},{'name': 'SmartDevicesComponent', 'selector': 'app-smart-devices'},{'name': 'SmartDeviceTypesComponent', 'selector': 'app-smart-device-types'},{'name': 'StatisticsViewComponent', 'selector': 'app-statistics-view'},{'name': 'TrusteesComponent', 'selector': 'app-trustees'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CreateMessageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CreateMessageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

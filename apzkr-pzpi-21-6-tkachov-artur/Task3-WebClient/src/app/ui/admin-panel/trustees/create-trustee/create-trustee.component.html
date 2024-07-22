@@ -1,0 +1,88 @@
+<app-header></app-header>
+
+<div class="card mb-3" *ngIf="loaded; else stillLoading">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Нікнейм</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="values.userName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Прізвище (не обов'язково)</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="values.lastName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Ім'я (не обов'язково)</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="values.firstName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">По батькові (не обов'язково)</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="values.middleName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Email адреса</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="email" class="form-control" [(ngModel)]="values.email">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Пароль</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="password" class="form-control" [(ngModel)]="values.password">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Підтвердіть пароль</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="password" class="form-control" [(ngModel)]="values.confirmPassword">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Номер телефону (не обов'язково)</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="values.phoneNumber">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <a (click)="saveChanges()" class="btn btn-info">Створити</a>
+        <a (click)="getBack()" class="btn btn-info" style="margin-left: 15px;">Скасувати</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

@@ -25,7 +25,7 @@ namespace medireminder.Helper
             CreateMap<TrusteeGetDto, Trustee>();
 
             CreateMap<Message, MessageDto>();
-            CreateMap<MessageDto, MessageDto>();
+            CreateMap<MessageDto, Message>();
 
             CreateMap<Medicine, MedicineDto>();
             CreateMap<MedicineDto, Medicine>();
@@ -35,10 +35,10 @@ namespace medireminder.Helper
             CreateMap<MedicationSchedule, MedicationScheduleDto>();
             CreateMap<MedicationScheduleDto,  MedicationSchedule>();
 
-            CreateMap<MedicationStatistics, MedicationStatisticsDto>();
-            CreateMap<MedicationStatisticsDto, MedicationStatistics>();
-            CreateMap<MedicationStatistics, MedicationStatisticsGetDto>();
-            CreateMap<MedicationStatisticsGetDto, MedicationStatistics>();
+            CreateMap<ScheduleEvent, ScheduleEventDto>();
+            CreateMap<ScheduleEventDto, ScheduleEvent>();
+            CreateMap<ScheduleEvent, ScheduleEventGetDto>();
+            CreateMap<ScheduleEventGetDto, ScheduleEvent>();
 
             CreateMap<MessageType, MessageTypeDto>();
             CreateMap<MessageTypeDto, MessageType>();

@@ -8,7 +8,7 @@
         public float Dosage { get; set; }
         public int PatientId { get; set; }
         public Patient Patient { get; set; }
-        public DateOnly ExpirationDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public string Instruction { get; set; }
         public float Quantity { get; set; }
     }

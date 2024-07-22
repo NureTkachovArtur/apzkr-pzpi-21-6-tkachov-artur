@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<div *ngIf="loaded; else stillLoading" id="content">
+  <h2>Перелік повідомлень</h2>
+  <ul *ngIf="messages.length != 0; else empty" class="list-group">
+    <li *ngFor="let message of messages" @fadeOut class="list-group-item">
+      <h5 class="mb-1">{{ message.type }}</h5>
+      <p class="mb-1">
+        Зміст: {{ message.text }}<br>
+        <span *ngIf="user.role != 'Patient'">
+          Стосовно: {{ message.patient.applicationUser.userName }}
+        </span>
+      </p>
+      <small>Дата: {{ message.createdAt | date: 'dd/MM/yyyy HH:mm:ss' }}</small>
+      <button class="btn btn-danger btn-sm float-end" (click)="deleteMessage(message.messageId)">
+        Видалити
+      </button>
+    </li>
+  </ul>
+</div>
+
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>
+
+<ng-template #empty>
+  <div id="centered">Порожньо</div>
+</ng-template>

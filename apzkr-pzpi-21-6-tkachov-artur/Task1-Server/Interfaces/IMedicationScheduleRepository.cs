@@ -6,6 +6,7 @@ namespace medireminder.Interfaces
     {
         ICollection<MedicationSchedule> GetMedicationSchedules();
         MedicationSchedule GetMedicationSchedule(int medicationScheduleId);
+        MedicationSchedule GetMedicationScheduleByDeviceId(int deviceId);
         ICollection<MedicationSchedule> GetMedicationSchedulesByPatient(int patientId);
         bool MedicationScheduleExists(int medicationScheduleId);
         bool CreateMedicationSchedule(MedicationSchedule medicationSchedule);

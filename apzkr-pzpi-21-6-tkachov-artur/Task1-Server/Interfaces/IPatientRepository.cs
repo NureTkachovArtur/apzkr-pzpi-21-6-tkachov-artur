@@ -7,11 +7,13 @@ namespace medireminder.Interfaces
     {
         ICollection<Patient> GetPatients();
         Patient GetPatient(int patientId);
+        Patient GetPatientByUID(string uid);
         Patient GetPatientByEmail(string email);
         ICollection<MessageDto> GetMessagesByPatient(int patientId);
         ICollection<Medicine> GetMedicinesByPatient(int patientId);
+        ICollection<SmartDevice> GetSmartDevicesByPatient(int patientId);
         ICollection<MedicationSchedule> GetMedicationSchedulesByPatient(int patientId);
-        ICollection<MedicationStatistics> GetMedicationStatisticsByPatient(int patientId);
+        ICollection<ScheduleEvent> GetScheduleEventsByPatient(int patientId);
         ICollection<Trustee> GetTrusteesByPatient(int patientId);
         ICollection<Doctor> GetDoctorsByPatient(int patientId);
         bool PatientExists(int patientId);

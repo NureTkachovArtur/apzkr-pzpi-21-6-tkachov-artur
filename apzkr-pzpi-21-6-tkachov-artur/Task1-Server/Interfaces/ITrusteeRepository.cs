@@ -6,6 +6,7 @@ namespace medireminder.Interfaces
     {
         ICollection<Trustee> GetTrustees();
         Trustee GetTrustee(int trusteeId);
+        Trustee GetTrusteeByUID(string uid);
         Trustee GetTrusteeByEmail(string email);
         ICollection<Patient> GetPatientsByTrustee(int trusteeId);
         bool TrusteeExists(int trusteeId);

@@ -52,6 +52,14 @@ namespace medireminder.Repository
                 .FirstOrDefault();
         }
 
+        public Doctor GetDoctorByUID(string uid)
+        {
+            return _context.Doctors
+                .Include(e => e.ApplicationUser)
+                .Where(e => e.ApplicationUser.Id == uid)
+                .FirstOrDefault();
+        }
+
         public ICollection<Doctor> GetDoctors()
         {
             return _context.Doctors

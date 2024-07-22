@@ -1,0 +1,137 @@
+<app-header></app-header>
+
+<div class="card mb-3" *ngIf="loaded; else stillLoading">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Пацієнт</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <select #patientId="ngModel"
+                name="gender"
+                [(ngModel)]="changes.patientId"
+                id="specializationSelect2"
+                class="form-control"
+                required
+                (change)="setPatient($event)">
+          <option value="" disabled selected>Оберіть пацієнта</option>
+          <option *ngFor="let patient of patients;" value="{{ patient.patientId }}">{{ patient.applicationUser.userName }}</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Ліки</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <select #medicineId="ngModel"
+                name="gender"
+                [(ngModel)]="changes.medicineId"
+                id="specializationSelect2"
+                class="form-control"
+                required>
+          <option value="" disabled selected>Оберіть ліки</option>
+          <option *ngFor="let medicine of medicines;" value="{{ medicine.medicineId }}">{{ medicine.name }}</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Пристрій</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <select #smartDeviceId="ngModel"
+                name="gender"
+                [(ngModel)]="changes.smartDeviceId"
+                id="specializationSelect2"
+                class="form-control"
+                required>
+          <option value="" disabled selected>Оберіть пристрій</option>
+          <option *ngFor="let sd of smartDevices;" value="{{ sd.smartDeviceId }}">{{ sd.smartDeviceType.name }}</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Дата першої дози</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="datetime-local" class="form-control" [(ngModel)]="changes.medicationStartDate">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Кількість доз на день</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input #medicationIntervalMinutes="ngModel"
+               name="dosesPerDay"
+               [(ngModel)]="changes.dosesPerDay"
+               type="number"
+               min="1"
+               id="middleNameInput2"
+               class="form-control" />
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Інтервал прийняття пігулок (у хвилинах)</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input #medicationIntervalMinutes="ngModel"
+               name="age"
+               [(ngModel)]="changes.medicationIntervalMinutes"
+               type="number"
+               min="0"
+               id="middleNameInput2"
+               class="form-control" />
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Дозування кожні N днів</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input #everyNDay="ngModel"
+               name="everyNDay"
+               [(ngModel)]="changes.everyNDay"
+               type="number"
+               min="0"
+               id="middleNameInput2"
+               class="form-control" />
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Дні дозування</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input #daysLeft="ngModel"
+               name="daysLeft"
+               [(ngModel)]="changes.daysLeft"
+               type="number"
+               min="0"
+               id="middleNameInput2"
+               class="form-control" />
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <a (click)="saveChanges()" class="btn btn-info">Зберегти</a>
+        <a (click)="getBack()" class="btn btn-info" style="margin-left: 15px;">Скасувати</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

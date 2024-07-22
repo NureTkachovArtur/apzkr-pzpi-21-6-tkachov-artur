@@ -1,0 +1,2707 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>medireminder-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">medireminder-client documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ScheduleViewComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/ui/schedule-view/schedule-view.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-schedule-view</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./schedule-view.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./schedule-view.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#_events" >_events</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#buttonAdd" >buttonAdd</a>
+                            </li>
+                            <li>
+                                <a href="#calendarOptions" >calendarOptions</a>
+                            </li>
+                            <li>
+                                <a href="#changes" >changes</a>
+                            </li>
+                            <li>
+                                <a href="#changesBefore" >changesBefore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#closePOSTButton" >closePOSTButton</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#closePUT" >closePUT</a>
+                            </li>
+                            <li>
+                                <a href="#currentEvents" >currentEvents</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#hiddenButton" >hiddenButton</a>
+                            </li>
+                            <li>
+                                <a href="#INITIAL_EVENTS" >INITIAL_EVENTS</a>
+                            </li>
+                            <li>
+                                <a href="#loaded" >loaded</a>
+                            </li>
+                            <li>
+                                <a href="#medicines" >medicines</a>
+                            </li>
+                            <li>
+                                <a href="#modalDialogMode" >modalDialogMode</a>
+                            </li>
+                            <li>
+                                <a href="#patient" >patient</a>
+                            </li>
+                            <li>
+                                <a href="#patientId" >patientId</a>
+                            </li>
+                            <li>
+                                <a href="#selectedEventId" >selectedEventId</a>
+                            </li>
+                            <li>
+                                <a href="#selectedToday" >selectedToday</a>
+                            </li>
+                            <li>
+                                <a href="#smartDevices" >smartDevices</a>
+                            </li>
+                            <li>
+                                <a href="#url" >url</a>
+                            </li>
+                            <li>
+                                <a href="#userRole" >userRole</a>
+                            </li>
+                            <li>
+                                <a href="#values" >values</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addCalendarEvents" >addCalendarEvents</a>
+                            </li>
+                            <li>
+                                <a href="#buttonAddPressed" >buttonAddPressed</a>
+                            </li>
+                            <li>
+                                <a href="#closePOSTModal" >closePOSTModal</a>
+                            </li>
+                            <li>
+                                <a href="#closePUTModal" >closePUTModal</a>
+                            </li>
+                            <li>
+                                <a href="#deleteSchedule" >deleteSchedule</a>
+                            </li>
+                            <li>
+                                <a href="#getMedicineData" >getMedicineData</a>
+                            </li>
+                            <li>
+                                <a href="#getMedicines" >getMedicines</a>
+                            </li>
+                            <li>
+                                <a href="#getPatient" >getPatient</a>
+                            </li>
+                            <li>
+                                <a href="#getScheduleEvents" >getScheduleEvents</a>
+                            </li>
+                            <li>
+                                <a href="#getSmartDevices" >getSmartDevices</a>
+                            </li>
+                            <li>
+                                <a href="#handleDateSelect" >handleDateSelect</a>
+                            </li>
+                            <li>
+                                <a href="#handleEventClick" >handleEventClick</a>
+                            </li>
+                            <li>
+                                <a href="#handleEvents" >handleEvents</a>
+                            </li>
+                            <li>
+                                <a href="#resetEvents" >resetEvents</a>
+                            </li>
+                            <li>
+                                <a href="#saveSchedulePOST" >saveSchedulePOST</a>
+                            </li>
+                            <li>
+                                <a href="#setValues" >setValues</a>
+                            </li>
+                            <li>
+                                <a href="#submitDose" >submitDose</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: HttpClient, route: ActivatedRoute, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, changeDetector: ChangeDetectorRef, toastr: ToastrService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:82</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>changeDetector</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addCalendarEvents"></a>
+                    <span class="name">
+                        <span ><b>addCalendarEvents</b></span>
+                        <a href="#addCalendarEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addCalendarEvents()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="275"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:275</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buttonAddPressed"></a>
+                    <span class="name">
+                        <span ><b>buttonAddPressed</b></span>
+                        <a href="#buttonAddPressed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>buttonAddPressed()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closePOSTModal"></a>
+                    <span class="name">
+                        <span ><b>closePOSTModal</b></span>
+                        <a href="#closePOSTModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closePOSTModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closePUTModal"></a>
+                    <span class="name">
+                        <span ><b>closePUTModal</b></span>
+                        <a href="#closePUTModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closePUTModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteSchedule"></a>
+                    <span class="name">
+                        <span ><b>deleteSchedule</b></span>
+                        <a href="#deleteSchedule"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteSchedule(scheduleId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="347"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:347</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>scheduleId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMedicineData"></a>
+                    <span class="name">
+                        <span ><b>getMedicineData</b></span>
+                        <a href="#getMedicineData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMedicineData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="248"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:248</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMedicines"></a>
+                    <span class="name">
+                        <span ><b>getMedicines</b></span>
+                        <a href="#getMedicines"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMedicines()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPatient"></a>
+                    <span class="name">
+                        <span ><b>getPatient</b></span>
+                        <a href="#getPatient"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPatient()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="297"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:297</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getScheduleEvents"></a>
+                    <span class="name">
+                        <span ><b>getScheduleEvents</b></span>
+                        <a href="#getScheduleEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getScheduleEvents()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="235"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:235</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSmartDevices"></a>
+                    <span class="name">
+                        <span ><b>getSmartDevices</b></span>
+                        <a href="#getSmartDevices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSmartDevices()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleDateSelect"></a>
+                    <span class="name">
+                        <span ><b>handleDateSelect</b></span>
+                        <a href="#handleDateSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleDateSelect(selectInfo: DateSelectArg)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>selectInfo</td>
+                                            <td>
+                                                        <code>DateSelectArg</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleEventClick"></a>
+                    <span class="name">
+                        <span ><b>handleEventClick</b></span>
+                        <a href="#handleEventClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleEventClick(clickInfo: EventClickArg)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>clickInfo</td>
+                                            <td>
+                                                        <code>EventClickArg</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleEvents"></a>
+                    <span class="name">
+                        <span ><b>handleEvents</b></span>
+                        <a href="#handleEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleEvents(events: EventApi[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="230"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:230</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>events</td>
+                                            <td>
+                                                        <code>EventApi[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetEvents"></a>
+                    <span class="name">
+                        <span ><b>resetEvents</b></span>
+                        <a href="#resetEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resetEvents()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="342"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:342</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveSchedulePOST"></a>
+                    <span class="name">
+                        <span ><b>saveSchedulePOST</b></span>
+                        <a href="#saveSchedulePOST"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveSchedulePOST()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="303"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:303</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setValues"></a>
+                    <span class="name">
+                        <span ><b>setValues</b></span>
+                        <a href="#setValues"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setValues(scheduleId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="207"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:207</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>scheduleId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitDose"></a>
+                    <span class="name">
+                        <span ><b>submitDose</b></span>
+                        <a href="#submitDose"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submitDose()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="357"
+                                    class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:357</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_events"></a>
+                    <span class="name">
+                        <span ><b>_events</b></span>
+                        <a href="#_events"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buttonAdd"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>buttonAdd</b></span>
+                        <a href="#buttonAdd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;buttonAdd&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calendarOptions"></a>
+                    <span class="name">
+                        <span ><b>calendarOptions</b></span>
+                        <a href="#calendarOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;CalendarOptions&gt;({
+    plugins: [
+      interactionPlugin,
+      dayGridPlugin,
+      timeGridPlugin,
+      listPlugin,
+    ],
+    headerToolbar: {
+      left: &#x27;prev,next today&#x27;,
+      center: &#x27;title&#x27;,
+      right: &#x27;dayGridMonth,listDay&#x27;
+    },
+    initialView: &#x27;dayGridMonth&#x27;,
+    initialEvents: this.INITIAL_EVENTS,
+    weekends: true,
+    editable: false,
+    selectable: true,
+    selectMirror: false,
+    dayMaxEvents: true,
+    firstDay: 1,
+    select: this.handleDateSelect.bind(this),
+    eventClick: this.handleEventClick.bind(this),
+    eventsSet: this.handleEvents.bind(this),
+    eventDisplay: &#x27;block&#x27;,
+    nextDayThreshold: &#x27;09:00:00&#x27;
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changes"></a>
+                    <span class="name">
+                        <span ><b>changes</b></span>
+                        <a href="#changes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/PUTValues.html" target="_self" >PUTValues</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new PUTValues()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changesBefore"></a>
+                    <span class="name">
+                        <span ><b>changesBefore</b></span>
+                        <a href="#changesBefore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/PUTValues.html" target="_self" >PUTValues</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new PUTValues()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closePOSTButton"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>closePOSTButton</b></span>
+                        <a href="#closePOSTButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;closePOSTbutton&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closePUT"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>closePUT</b></span>
+                        <a href="#closePUT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;closePUT&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentEvents"></a>
+                    <span class="name">
+                        <span ><b>currentEvents</b></span>
+                        <a href="#currentEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;EventApi[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hiddenButton"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>hiddenButton</b></span>
+                        <a href="#hiddenButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;hiddenButton&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="INITIAL_EVENTS"></a>
+                    <span class="name">
+                        <span ><b>INITIAL_EVENTS</b></span>
+                        <a href="#INITIAL_EVENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventInput[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loaded"></a>
+                    <span class="name">
+                        <span ><b>loaded</b></span>
+                        <a href="#loaded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="medicines"></a>
+                    <span class="name">
+                        <span ><b>medicines</b></span>
+                        <a href="#medicines"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalDialogMode"></a>
+                    <span class="name">
+                        <span ><b>modalDialogMode</b></span>
+                        <a href="#modalDialogMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patient"></a>
+                    <span class="name">
+                        <span ><b>patient</b></span>
+                        <a href="#patient"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patientId"></a>
+                    <span class="name">
+                        <span ><b>patientId</b></span>
+                        <a href="#patientId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedEventId"></a>
+                    <span class="name">
+                        <span ><b>selectedEventId</b></span>
+                        <a href="#selectedEventId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedToday"></a>
+                    <span class="name">
+                        <span ><b>selectedToday</b></span>
+                        <a href="#selectedToday"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="smartDevices"></a>
+                    <span class="name">
+                        <span ><b>smartDevices</b></span>
+                        <a href="#smartDevices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="url"></a>
+                    <span class="name">
+                        <span ><b>url</b></span>
+                        <a href="#url"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.apiBaseUrl</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userRole"></a>
+                    <span class="name">
+                        <span ><b>userRole</b></span>
+                        <a href="#userRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="values"></a>
+                    <span class="name">
+                        <span ><b>values</b></span>
+                        <a href="#values"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new POSTValues()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/ui/schedule-view/schedule-view.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { animate, style, transition, trigger } from &#x27;@angular/animations&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { ChangeDetectorRef, Component, ElementRef, ViewChild, signal } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { CalendarOptions, DateSelectArg, EventApi, EventClickArg, EventInput } from &#x27;@fullcalendar/core&#x27;;
+import dayGridPlugin from &#x27;@fullcalendar/daygrid&#x27;;
+import interactionPlugin from &#x27;@fullcalendar/interaction&#x27;;
+import listPlugin from &#x27;@fullcalendar/list&#x27;;
+import timeGridPlugin from &#x27;@fullcalendar/timegrid&#x27;;
+import { forkJoin, map } from &#x27;rxjs&#x27;;
+import { environment } from &#x27;../../../environments/environment&#x27;;
+import { changeDayInDate, currentDate } from &#x27;../../helpers&#x27;;
+import { AuthService } from &#x27;../../services/auth/auth.service&#x27;;
+import { POSTValues } from &#x27;../admin-panel/medication-schedules/create-medication-schedule/create-medication-schedule.model&#x27;;
+import { ToastrService } from &#x27;ngx-toastr&#x27;;
+import { PUTValues } from &#x27;../admin-panel/medication-schedules/put-medication-schedule/put-medication-schedule.model&#x27;;
+
+@Component({
+  selector: &#x27;app-schedule-view&#x27;,
+  templateUrl: &#x27;./schedule-view.component.html&#x27;,
+  styleUrl: &#x27;./schedule-view.component.css&#x27;,
+  animations: [
+    trigger(&#x27;fadeOut&#x27;, [
+      transition(&#x27;:leave&#x27;, [
+        animate(&#x27;0.3s&#x27;, style({ opacity: 0 }))
+      ])
+    ])
+  ]
+})
+export class ScheduleViewComponent {
+
+  // CALENDAR SETTINGS
+  INITIAL_EVENTS: EventInput[] &#x3D; [];
+  calendarOptions &#x3D; signal&lt;CalendarOptions&gt;({
+    plugins: [
+      interactionPlugin,
+      dayGridPlugin,
+      timeGridPlugin,
+      listPlugin,
+    ],
+    headerToolbar: {
+      left: &#x27;prev,next today&#x27;,
+      center: &#x27;title&#x27;,
+      right: &#x27;dayGridMonth,listDay&#x27;
+    },
+    initialView: &#x27;dayGridMonth&#x27;,
+    initialEvents: this.INITIAL_EVENTS,
+    weekends: true,
+    editable: false,
+    selectable: true,
+    selectMirror: false,
+    dayMaxEvents: true,
+    firstDay: 1,
+    select: this.handleDateSelect.bind(this),
+    eventClick: this.handleEventClick.bind(this),
+    eventsSet: this.handleEvents.bind(this),
+    eventDisplay: &#x27;block&#x27;,
+    nextDayThreshold: &#x27;09:00:00&#x27;
+  });
+  currentEvents &#x3D; signal&lt;EventApi[]&gt;([]);
+
+  // DATA SETTINGS
+  url: string &#x3D; environment.apiBaseUrl;
+  _events: any &#x3D; [];
+  patientId: any;
+  patient: any;
+  userRole: any;
+  loaded: boolean &#x3D; false;
+
+  // MODAL DIALOG SETTINGS
+  modalDialogMode: string &#x3D; &#x27;&#x27;;
+  values: any &#x3D; new POSTValues();
+  medicines: any;
+  smartDevices: any;
+  @ViewChild(&#x27;hiddenButton&#x27;) hiddenButton!: ElementRef&lt;HTMLElement&gt;;
+  @ViewChild(&#x27;closePUT&#x27;) closePUT!: ElementRef&lt;HTMLElement&gt;;
+  @ViewChild(&#x27;buttonAdd&#x27;) buttonAdd!: ElementRef&lt;HTMLElement&gt;;
+  @ViewChild(&#x27;closePOSTbutton&#x27;) closePOSTButton!: ElementRef&lt;HTMLElement&gt;;
+  changes: PUTValues &#x3D; new PUTValues();
+  changesBefore: PUTValues &#x3D; new PUTValues();
+  selectedEventId: number &#x3D; 0;
+  selectedToday: boolean &#x3D; true;
+
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private changeDetector: ChangeDetectorRef,
+    private toastr: ToastrService
+  ) {
+    this.userRole &#x3D; this.authService.getUserInfo()!.role;
+    this.route.params.subscribe(data &#x3D;&gt; {
+      this.patientId &#x3D; data[&#x27;id&#x27;];
+      this.getScheduleEvents();
+      this.getMedicines();
+      this.getSmartDevices();
+
+      if (this.userRole !&#x3D; &#x27;Patient&#x27;) {
+        this.getPatient();
+      }
+    });
+  }
+
+  getMedicines() {
+    this.http.get(this.url + &quot;/Patients/medicines/&quot; + this.patientId).subscribe(data &#x3D;&gt; {
+      this.medicines &#x3D; data;
+    });
+  }
+
+  getSmartDevices() {
+    this.http.get(this.url + &quot;/Patients/devices/&quot; + this.patientId).subscribe(data &#x3D;&gt; {
+      this.smartDevices &#x3D; data;
+      if (this.modalDialogMode &#x3D;&#x3D; &#x27;put&#x27;) {
+        this.closePUTModal();
+      }
+    });
+  }
+
+  closePUTModal() {
+    const el: HTMLElement &#x3D; this.hiddenButton.nativeElement;
+    el.click();
+  }
+
+  closePOSTModal() {
+    const el: HTMLElement &#x3D; this.closePOSTButton.nativeElement;
+    el.click();
+  }
+
+  buttonAddPressed() {
+    this.values.medicationStartDate &#x3D; currentDate();
+  }
+
+  handleDateSelect(selectInfo: DateSelectArg) {
+    if (this.userRole &#x3D;&#x3D; &#x27;Trustee&#x27;) {
+      return;
+    }
+
+    var selectedDay &#x3D; +selectInfo.startStr.split(&#x27;-&#x27;).at(2)!;
+    var currentDay &#x3D; new Date().getDate();
+    if (currentDay &gt; selectedDay) {
+      return;
+    }
+
+    this.modalDialogMode &#x3D; &#x27;post&#x27;;
+    var date &#x3D; changeDayInDate(this.values.medicationStartDate, selectedDay);
+    const el: HTMLElement &#x3D; this.buttonAdd.nativeElement;
+    el.click();
+    this.values.medicationStartDate &#x3D; date;
+  }
+
+  handleEventClick(clickInfo: EventClickArg) {
+    if (this.userRole &#x3D;&#x3D; &#x27;Trustee&#x27;) {
+      return;
+    }
+
+    this.selectedEventId &#x3D; clickInfo.event._def.extendedProps[&#x27;eventId&#x27;];
+    var selectedEvent &#x3D; null;
+    for (var _event of this._events) {
+      if (_event.scheduleEventId &#x3D;&#x3D; this.selectedEventId) {
+        selectedEvent &#x3D; _event;
+        break;
+      }
+    }
+
+    var eventsOfSelectedDay &#x3D; [];
+    var selectedDay &#x3D; new Date(_event.medicationTime).getDate();
+    for (var sdf of this._events) {
+      if (sdf.MedicationTime &#x3D;&#x3D; selectedDay &amp;&amp; !sdf.activated) {
+        eventsOfSelectedDay.push(sdf);
+      }
+    }
+
+    var currentDate &#x3D; new Date();
+    var currentDay &#x3D; currentDate.getDate();
+    if (currentDay !&#x3D; selectedDay) {
+      this.selectedToday &#x3D; false;
+    } else {
+      this.selectedToday &#x3D; true;
+    }
+
+    if (selectedEvent.pastNeededTime || selectedEvent.activated) {
+      this.selectedToday &#x3D; false;
+    }
+
+    if (this.selectedToday) {
+      var count &#x3D; 0;
+      for (var _event of eventsOfSelectedDay) {
+        if (!_event.activated &amp;&amp; !_event.missedDose) {
+          if (_event.scheduleEventId &#x3D;&#x3D; this.selectedEventId &amp;&amp; count &#x3D;&#x3D; 0) {
+            this.selectedToday &#x3D; true;
+            break;
+          } else {
+            this.selectedToday &#x3D; false;
+          }
+          count +&#x3D; 1;
+        }
+      }
+    }
+
+    this.modalDialogMode &#x3D; &#x27;put&#x27;;
+    const scheduleId &#x3D; clickInfo.event._def.extendedProps[&#x27;scheduleId&#x27;];
+    this.setValues(scheduleId);
+    this.getMedicines();
+    this.getSmartDevices();
+  }
+
+  setValues(scheduleId: number) {
+    var correctDate: any &#x3D; undefined;
+    for (var _event of this._events) {
+      if (_event.scheduleEventId &#x3D;&#x3D; this.selectedEventId) {
+        correctDate &#x3D; _event.medicationTime;
+        break;
+      }
+    }
+
+    this.http.get(this.url + &quot;/MedicationSchedules/&quot; + scheduleId).subscribe((data: any) &#x3D;&gt; {
+      this.changes.dosesPerDay &#x3D; data.dosesPerDay;
+      this.changes.medicationIntervalMinutes &#x3D; data.medicationIntervalMinutes;
+      this.changes.medicationScheduleId &#x3D; data.medicationScheduleId;
+      this.changes.medicationStartDate &#x3D; correctDate;
+      this.changes.medicineId &#x3D; data.medicineId;
+      this.changes.smartDeviceId &#x3D; data.smartDeviceId;
+      this.changes.daysLeft &#x3D; data.daysLeft;
+      this.changes.everyNDay &#x3D; data.everyNDay;
+
+      this.changesBefore &#x3D; { ...this.changes };
+    });
+  }
+
+  handleEvents(events: EventApi[]) {
+    this.currentEvents.set(events);
+    this.changeDetector.detectChanges();
+  }
+
+  getScheduleEvents() {
+    this.http.get(this.url + &quot;/ScheduleEvents/patient/&quot; + this.patientId).subscribe((data: any) &#x3D;&gt; {
+      this._events &#x3D; data;
+
+      if (data.length !&#x3D; 0) {
+        this.getMedicineData();
+        return;
+      }
+
+      this.loaded &#x3D; true;
+    });
+  }
+
+  getMedicineData() {
+    var medicineToGet: any &#x3D; {};
+    for (var sc of this._events) {
+      medicineToGet[sc.medicationSchedule.medicineId] &#x3D; null;
+    }
+
+    var observables &#x3D; [];
+    for (var medicineId in medicineToGet) {
+      observables.push(
+        this.http.get(this.url + &#x27;/Medicines/&#x27; + medicineId).pipe(
+          map(data &#x3D;&gt; ({ medicineId, data }))
+        )
+      );
+    }
+
+    forkJoin(observables).subscribe((results: any) &#x3D;&gt; {
+      for (let result of results) {
+        medicineToGet[result.data.medicineId] &#x3D; result.data;
+      }
+      for (var sc of this._events) {
+        sc.medicine &#x3D; medicineToGet[sc.medicationSchedule.medicineId];
+      }
+
+      this.addCalendarEvents();
+    });
+  }
+
+  addCalendarEvents() {
+    for (var sc of this._events) {
+      var color &#x3D; undefined;
+      if (sc.activated) {
+        color &#x3D; &#x27;green&#x27;;
+      } else if (sc.pastNeededTime) {
+        color &#x3D; &#x27;red&#x27;;
+      }
+
+      this.INITIAL_EVENTS.push({
+        id: sc.scheduleEventId,
+        scheduleId: sc.medicationSchedule.medicationScheduleId,
+        title: sc.medicine.name,
+        start: sc.medicationTime,
+        eventId: sc.scheduleEventId,
+        color: color
+      })
+    }
+
+    this.loaded &#x3D; true;
+  }
+
+  getPatient() {
+    this.http.get(this.url + &#x27;/Patients/&#x27; + this.patientId).subscribe(data &#x3D;&gt; {
+      this.patient &#x3D; data;
+    });
+  }
+
+  saveSchedulePOST() {
+    this.values.patientId &#x3D; +this.patientId;
+    this.values.medicineId &#x3D; +this.values.medicineId;
+    this.values.smartDeviceId &#x3D; +this.values.smartDeviceId;
+
+    if (!this.values.patientId ||
+      !this.values.medicineId ||
+      !this.values.smartDeviceId ||
+      !this.values.medicationStartDate ||
+      !this.values.dosesPerDay ||
+      !this.values.daysLeft ||
+      !this.values.everyNDay) {
+      this.toastr.error(&quot;Не всі поля заповнені&quot;, &quot;Помилка&quot;);
+      return;
+    }
+
+    this.http.get(this.url + &#x27;/Medicines/&#x27; + this.values.medicineId).subscribe((data : any) &#x3D;&gt; {
+      const quantityNeeded &#x3D; this.values.dosesPerDay * this.values.daysLeft * data.dosage;
+      if (quantityNeeded &gt; data.quantity) {
+        this.toastr.show(&quot;Кількість ліків недостатнья для цього розкладу&quot;, &quot;Мало ліків&quot;);
+        return;
+      } else {
+        this.http.post(this.url + &quot;/MedicationSchedules&quot;, this.values).subscribe(
+          (response: any) &#x3D;&gt; {
+            if (!response.ok) {
+              this.toastr.error(response.message, &quot;Помилка&quot;);
+            } else {
+              this.resetEvents();
+              this.closePOSTModal();
+            }
+          },
+          error &#x3D;&gt; {
+            this.toastr.error(&quot;Проблема сервера, спробуйте пізніше&quot;, &quot;Помилка&quot;);
+          }
+        );
+      }
+    });
+  }
+
+  resetEvents() {
+    this.INITIAL_EVENTS &#x3D; [];
+    this.getScheduleEvents();
+  }
+
+  deleteSchedule(scheduleId: number) {
+    this.http.delete(this.url + &quot;/MedicationSchedules/&quot; + scheduleId).subscribe(res &#x3D;&gt; {
+      for (let i &#x3D; 0; i &lt; this._events.length; i++) {
+        if (this._events[i].medicationSchedule.medicationScheduleId &#x3D;&#x3D; scheduleId) {
+          this._events.splice(i, 1);
+        }
+      }
+    });
+  }
+
+  submitDose() {
+    if (!this.selectedToday) {
+      return;
+    }
+    const minutesBeforeToDose &#x3D; 15;
+
+    var selectedEvent &#x3D; null;
+    for (var _event of this._events) {
+      if (_event.scheduleEventId &#x3D;&#x3D; this.selectedEventId) {
+        selectedEvent &#x3D; _event;
+        break;
+      }
+    }
+
+    var currentDate &#x3D; new Date();
+    var currentTimeInMinutes &#x3D; (currentDate.getHours() * 60) + currentDate.getMinutes();
+    var needeedDate &#x3D; new Date(selectedEvent.medicationTime);
+    var needeedTimeInMinutes &#x3D; (needeedDate.getHours() * 60) + needeedDate.getMinutes();
+    if (needeedTimeInMinutes - currentTimeInMinutes &gt; minutesBeforeToDose) {
+      this.toastr.show(&#x27;Ще надто рано для прийняття ліків&#x27;, &#x27;Не поспішайте&#x27;);
+      return;
+    }
+
+    this.http.put(this.url + &#x27;/ScheduleEvents/activate/&#x27; + this.selectedEventId, {}).subscribe((response : any) &#x3D;&gt; {
+      if (!response.ok) {
+        this.toastr.error(response.message, &quot;Помилка&quot;);
+      } else {
+        this.toastr.success(&#x27;Дані було збережено&#x27;, &#x27;Успіх&#x27;);
+        this.resetEvents();
+      }
+    });
+
+    this.selectedEventId &#x3D; 0;
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-header&gt;&lt;/app-header&gt;
+
+&lt;div id&#x3D;&quot;content&quot; *ngIf&#x3D;&quot;loaded; else stillLoading&quot; style&#x3D;&quot;margin-bottom: 20px;&quot;&gt;
+  &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+    &lt;h2 *ngIf&#x3D;&quot;userRole &#x3D;&#x3D; &#x27;Patient&#x27;&quot;&gt;Календар&lt;/h2&gt;
+    &lt;h2 *ngIf&#x3D;&quot;userRole !&#x3D; &#x27;Patient&#x27;&quot;&gt;Календар користувача {{ patient.applicationUser.userName }}&lt;/h2&gt;
+    &lt;button
+            #buttonAdd
+            *ngIf&#x3D;&quot;userRole !&#x3D; &#x27;Trustee&#x27;&quot;
+            type&#x3D;&quot;button&quot;
+            data-bs-toggle&#x3D;&quot;modal&quot;
+            data-bs-target&#x3D;&quot;#exampleModal&quot;
+            (click)&#x3D;&quot;buttonAddPressed()&quot;
+            class&#x3D;&quot;btn btn-info&quot;&gt;Додати&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;full-calendar [options]&#x3D;&#x27;calendarOptions()&#x27;&gt;
+    &lt;ng-template #eventContent let-arg&gt;
+      &lt;b&gt;{{ arg.timeText }}&lt;/b&gt;
+      &lt;i&gt;{{ arg.event.title }}&lt;/i&gt;
+    &lt;/ng-template&gt;
+  &lt;/full-calendar&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;modal fade&quot; id&#x3D;&quot;exampleModal&quot; tabindex&#x3D;&quot;-1&quot; aria-labelledby&#x3D;&quot;exampleModalLabel&quot; aria-hidden&#x3D;&quot;true&quot;&gt;
+  &lt;div class&#x3D;&quot;modal-dialog&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+        &lt;h1 class&#x3D;&quot;modal-title fs-5&quot; id&#x3D;&quot;exampleModalLabel&quot;&gt;Створення розкладу&lt;/h1&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-close&quot; data-bs-dismiss&#x3D;&quot;modal&quot; aria-label&#x3D;&quot;Close&quot;&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+        &lt;form&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Ліки&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;select #medicineId&#x3D;&quot;ngModel&quot;
+                      name&#x3D;&quot;gender&quot;
+                      [(ngModel)]&#x3D;&quot;values.medicineId&quot;
+                      id&#x3D;&quot;specializationSelect2&quot;
+                      class&#x3D;&quot;form-control&quot;
+                      required&gt;
+                &lt;option value&#x3D;&quot;&quot; disabled selected&gt;Оберіть ліки&lt;/option&gt;
+                &lt;option *ngFor&#x3D;&quot;let medicine of medicines;&quot; value&#x3D;&quot;{{ medicine.medicineId }}&quot;&gt;{{ medicine.name }}&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Пристрій&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;select #smartDeviceId&#x3D;&quot;ngModel&quot;
+                      name&#x3D;&quot;gender&quot;
+                      [(ngModel)]&#x3D;&quot;values.smartDeviceId&quot;
+                      id&#x3D;&quot;specializationSelect2&quot;
+                      class&#x3D;&quot;form-control&quot;
+                      required&gt;
+                &lt;option value&#x3D;&quot;&quot; disabled selected&gt;Оберіть пристрій&lt;/option&gt;
+                &lt;option *ngFor&#x3D;&quot;let sd of smartDevices;&quot; value&#x3D;&quot;{{ sd.smartDeviceId }}&quot;&gt;{{ sd.smartDeviceType.name }}&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Дата першої дози&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input
+                     name&#x3D;&quot;medicationStartDate&quot;
+                     type&#x3D;&quot;datetime-local&quot;
+                     class&#x3D;&quot;form-control&quot;
+                     [(ngModel)]&#x3D;&quot;values.medicationStartDate&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Кількість доз на день&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input #medicationIntervalMinutes&#x3D;&quot;ngModel&quot;
+                     name&#x3D;&quot;dosesPerDay&quot;
+                     [(ngModel)]&#x3D;&quot;values.dosesPerDay&quot;
+                     type&#x3D;&quot;number&quot;
+                     min&#x3D;&quot;1&quot;
+                     id&#x3D;&quot;middleNameInput2&quot;
+                     class&#x3D;&quot;form-control&quot; /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Інтервал прийняття пігулок (у хвилинах)&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input #medicationIntervalMinutes&#x3D;&quot;ngModel&quot;
+                     name&#x3D;&quot;age&quot;
+                     [(ngModel)]&#x3D;&quot;values.medicationIntervalMinutes&quot;
+                     type&#x3D;&quot;number&quot;
+                     min&#x3D;&quot;0&quot;
+                     id&#x3D;&quot;middleNameInput2&quot;
+                     class&#x3D;&quot;form-control&quot; /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Дозування кожні N днів&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input #everyNDay&#x3D;&quot;ngModel&quot;
+                     name&#x3D;&quot;everyNDay&quot;
+                     [(ngModel)]&#x3D;&quot;values.everyNDay&quot;
+                     type&#x3D;&quot;number&quot;
+                     min&#x3D;&quot;0&quot;
+                     id&#x3D;&quot;middleNameInput2&quot;
+                     class&#x3D;&quot;form-control&quot; /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Дні дозування&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input #daysLeft&#x3D;&quot;ngModel&quot;
+                     name&#x3D;&quot;daysLeft&quot;
+                     [(ngModel)]&#x3D;&quot;values.daysLeft&quot;
+                     type&#x3D;&quot;number&quot;
+                     min&#x3D;&quot;0&quot;
+                     id&#x3D;&quot;middleNameInput2&quot;
+                     class&#x3D;&quot;form-control&quot; /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+        &lt;button #closePOSTbutton type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; data-bs-dismiss&#x3D;&quot;modal&quot;&gt;Скасувати&lt;/button&gt;
+        &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;saveSchedulePOST()&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Зберегти&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button
+        #hiddenButton
+        style&#x3D;&quot;display: none&quot;
+        type&#x3D;&quot;button&quot;
+        class&#x3D;&quot;btn btn-primary&quot;
+        data-bs-toggle&#x3D;&quot;modal&quot;
+        data-bs-target&#x3D;&quot;#exampleModal1&quot;&gt;Open&lt;/button&gt;
+&lt;div class&#x3D;&quot;modal fade&quot; id&#x3D;&quot;exampleModal1&quot; tabindex&#x3D;&quot;-1&quot; aria-labelledby&#x3D;&quot;exampleModalLabel&quot; aria-hidden&#x3D;&quot;true&quot;&gt;
+  &lt;div class&#x3D;&quot;modal-dialog&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+        &lt;h1 class&#x3D;&quot;modal-title fs-5&quot; id&#x3D;&quot;exampleModalLabel&quot;&gt;Зміна розкладу&lt;/h1&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-close&quot; data-bs-dismiss&#x3D;&quot;modal&quot; aria-label&#x3D;&quot;Close&quot;&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+        &lt;form&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Ліки&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;select
+                      disabled
+                      #medicineId&#x3D;&quot;ngModel&quot;
+                      name&#x3D;&quot;medicineId&quot;
+                      [(ngModel)]&#x3D;&quot;changes.medicineId&quot;
+                      id&#x3D;&quot;medicineId&quot;
+                      class&#x3D;&quot;form-control&quot;
+                      required&gt;
+                &lt;option value&#x3D;&quot;&quot; disabled selected&gt;Оберіть ліки&lt;/option&gt;
+                &lt;option *ngFor&#x3D;&quot;let medicine of medicines;&quot; value&#x3D;&quot;{{ medicine.medicineId }}&quot;&gt;{{ medicine.name }}&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Пристрій&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;select
+                      disabled
+                      #smartDeviceId&#x3D;&quot;ngModel&quot;
+                      name&#x3D;&quot;smartDeviceId&quot;
+                      [(ngModel)]&#x3D;&quot;changes.smartDeviceId&quot;
+                      id&#x3D;&quot;smartDeviceId&quot;
+                      class&#x3D;&quot;form-control&quot;
+                      required&gt;
+                &lt;option value&#x3D;&quot;&quot; disabled selected&gt;Оберіть пристрій&lt;/option&gt;
+                &lt;option *ngFor&#x3D;&quot;let sd of smartDevices;&quot; value&#x3D;&quot;{{ sd.smartDeviceId }}&quot;&gt;{{ sd.smartDeviceType.name }}&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Дата першої дози&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input
+                     disabled
+                     name&#x3D;&quot;medicationStartDate&quot;
+                     type&#x3D;&quot;datetime-local&quot;
+                     class&#x3D;&quot;form-control&quot;
+                     [(ngModel)]&#x3D;&quot;changes.medicationStartDate&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Кількість доз на день&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input
+                     disabled
+                     #medicationIntervalMinutes&#x3D;&quot;ngModel&quot;
+                     name&#x3D;&quot;dosesPerDay&quot;
+                     [(ngModel)]&#x3D;&quot;changes.dosesPerDay&quot;
+                     type&#x3D;&quot;number&quot;
+                     min&#x3D;&quot;1&quot;
+                     id&#x3D;&quot;middleNameInput2&quot;
+                     class&#x3D;&quot;form-control&quot; /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Інтервал прийняття пігулок (у хвилинах)&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input
+                     disabled
+                     #medicationIntervalMinutes&#x3D;&quot;ngModel&quot;
+                     name&#x3D;&quot;age&quot;
+                     [(ngModel)]&#x3D;&quot;changes.medicationIntervalMinutes&quot;
+                     type&#x3D;&quot;number&quot;
+                     min&#x3D;&quot;0&quot;
+                     id&#x3D;&quot;middleNameInput2&quot;
+                     class&#x3D;&quot;form-control&quot; /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Дозування кожні N днів&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input
+                     disabled
+                     #everyNDay&#x3D;&quot;ngModel&quot;
+                     name&#x3D;&quot;everyNDay&quot;
+                     [(ngModel)]&#x3D;&quot;changes.everyNDay&quot;
+                     type&#x3D;&quot;number&quot;
+                     min&#x3D;&quot;0&quot;
+                     id&#x3D;&quot;middleNameInput2&quot;
+                     class&#x3D;&quot;form-control&quot; /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr&gt;
+          &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+              &lt;h6 class&#x3D;&quot;mb-0&quot;&gt;Дні дозування&lt;/h6&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm-9 text-secondary&quot;&gt;
+              &lt;input 
+                     disabled
+                     #daysLeft&#x3D;&quot;ngModel&quot;
+                     name&#x3D;&quot;daysLeft&quot;
+                     [(ngModel)]&#x3D;&quot;changes.daysLeft&quot;
+                     type&#x3D;&quot;number&quot;
+                     min&#x3D;&quot;0&quot;
+                     id&#x3D;&quot;middleNameInput2&quot;
+                     class&#x3D;&quot;form-control&quot; /&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+        &lt;button data-bs-dismiss&#x3D;&quot;modal&quot; style&#x3D;&quot;margin-right: auto;&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;deleteSchedule(changes.medicationScheduleId)&quot; class&#x3D;&quot;btn btn-danger&quot;&gt;Видалити&lt;/button&gt;
+        &lt;button
+                *ngIf&#x3D;&quot;userRole &#x3D;&#x3D; &#x27;Patient&#x27;&quot;
+                [disabled]&#x3D;&quot;!selectedToday&quot;
+                (click)&#x3D;&quot;submitDose()&quot;
+                type&#x3D;&quot;button&quot;
+                class&#x3D;&quot;btn btn-primary&quot;
+                data-bs-dismiss&#x3D;&quot;modal&quot;&gt;
+          &lt;i class&#x3D;&quot;fa-regular fa-calendar-check&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;button #closePUT type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; data-bs-dismiss&#x3D;&quot;modal&quot;&gt;Скасувати&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ng-template #stillLoading&gt;
+  Still Loading...
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-header></app-header><div id="content" *ngIf="loaded; else stillLoading" style="margin-bottom: 20px;">  <div class="d-flex justify-content-between align-items-center">    <h2 *ngIf="userRole == \'Patient\'">Календар</h2>    <h2 *ngIf="userRole != \'Patient\'">Календар користувача {{ patient.applicationUser.userName }}</h2>    <button            #buttonAdd            *ngIf="userRole != \'Trustee\'"            type="button"            data-bs-toggle="modal"            data-bs-target="#exampleModal"            (click)="buttonAddPressed()"            class="btn btn-info">Додати</button>  </div>  <full-calendar [options]=\'calendarOptions()\'>    <ng-template #eventContent let-arg>      <b>{{ arg.timeText }}</b>      <i>{{ arg.event.title }}</i>    </ng-template>  </full-calendar></div><div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">  <div class="modal-dialog">    <div class="modal-content">      <div class="modal-header">        <h1 class="modal-title fs-5" id="exampleModalLabel">Створення розкладу</h1>        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>      </div>      <div class="modal-body">        <form>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Ліки</h6>            </div>            <div class="col-sm-9 text-secondary">              <select #medicineId="ngModel"                      name="gender"                      [(ngModel)]="values.medicineId"                      id="specializationSelect2"                      class="form-control"                      required>                <option value="" disabled selected>Оберіть ліки</option>                <option *ngFor="let medicine of medicines;" value="{{ medicine.medicineId }}">{{ medicine.name }}</option>              </select>            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Пристрій</h6>            </div>            <div class="col-sm-9 text-secondary">              <select #smartDeviceId="ngModel"                      name="gender"                      [(ngModel)]="values.smartDeviceId"                      id="specializationSelect2"                      class="form-control"                      required>                <option value="" disabled selected>Оберіть пристрій</option>                <option *ngFor="let sd of smartDevices;" value="{{ sd.smartDeviceId }}">{{ sd.smartDeviceType.name }}</option>              </select>            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Дата першої дози</h6>            </div>            <div class="col-sm-9 text-secondary">              <input                     name="medicationStartDate"                     type="datetime-local"                     class="form-control"                     [(ngModel)]="values.medicationStartDate">            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Кількість доз на день</h6>            </div>            <div class="col-sm-9 text-secondary">              <input #medicationIntervalMinutes="ngModel"                     name="dosesPerDay"                     [(ngModel)]="values.dosesPerDay"                     type="number"                     min="1"                     id="middleNameInput2"                     class="form-control" />            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Інтервал прийняття пігулок (у хвилинах)</h6>            </div>            <div class="col-sm-9 text-secondary">              <input #medicationIntervalMinutes="ngModel"                     name="age"                     [(ngModel)]="values.medicationIntervalMinutes"                     type="number"                     min="0"                     id="middleNameInput2"                     class="form-control" />            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Дозування кожні N днів</h6>            </div>            <div class="col-sm-9 text-secondary">              <input #everyNDay="ngModel"                     name="everyNDay"                     [(ngModel)]="values.everyNDay"                     type="number"                     min="0"                     id="middleNameInput2"                     class="form-control" />            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Дні дозування</h6>            </div>            <div class="col-sm-9 text-secondary">              <input #daysLeft="ngModel"                     name="daysLeft"                     [(ngModel)]="values.daysLeft"                     type="number"                     min="0"                     id="middleNameInput2"                     class="form-control" />            </div>          </div>        </form>      </div>      <div class="modal-footer">        <button #closePOSTbutton type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>        <button type="button" (click)="saveSchedulePOST()" class="btn btn-primary">Зберегти</button>      </div>    </div>  </div></div><button        #hiddenButton        style="display: none"        type="button"        class="btn btn-primary"        data-bs-toggle="modal"        data-bs-target="#exampleModal1">Open</button><div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">  <div class="modal-dialog">    <div class="modal-content">      <div class="modal-header">        <h1 class="modal-title fs-5" id="exampleModalLabel">Зміна розкладу</h1>        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>      </div>      <div class="modal-body">        <form>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Ліки</h6>            </div>            <div class="col-sm-9 text-secondary">              <select                      disabled                      #medicineId="ngModel"                      name="medicineId"                      [(ngModel)]="changes.medicineId"                      id="medicineId"                      class="form-control"                      required>                <option value="" disabled selected>Оберіть ліки</option>                <option *ngFor="let medicine of medicines;" value="{{ medicine.medicineId }}">{{ medicine.name }}</option>              </select>            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Пристрій</h6>            </div>            <div class="col-sm-9 text-secondary">              <select                      disabled                      #smartDeviceId="ngModel"                      name="smartDeviceId"                      [(ngModel)]="changes.smartDeviceId"                      id="smartDeviceId"                      class="form-control"                      required>                <option value="" disabled selected>Оберіть пристрій</option>                <option *ngFor="let sd of smartDevices;" value="{{ sd.smartDeviceId }}">{{ sd.smartDeviceType.name }}</option>              </select>            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Дата першої дози</h6>            </div>            <div class="col-sm-9 text-secondary">              <input                     disabled                     name="medicationStartDate"                     type="datetime-local"                     class="form-control"                     [(ngModel)]="changes.medicationStartDate">            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Кількість доз на день</h6>            </div>            <div class="col-sm-9 text-secondary">              <input                     disabled                     #medicationIntervalMinutes="ngModel"                     name="dosesPerDay"                     [(ngModel)]="changes.dosesPerDay"                     type="number"                     min="1"                     id="middleNameInput2"                     class="form-control" />            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Інтервал прийняття пігулок (у хвилинах)</h6>            </div>            <div class="col-sm-9 text-secondary">              <input                     disabled                     #medicationIntervalMinutes="ngModel"                     name="age"                     [(ngModel)]="changes.medicationIntervalMinutes"                     type="number"                     min="0"                     id="middleNameInput2"                     class="form-control" />            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Дозування кожні N днів</h6>            </div>            <div class="col-sm-9 text-secondary">              <input                     disabled                     #everyNDay="ngModel"                     name="everyNDay"                     [(ngModel)]="changes.everyNDay"                     type="number"                     min="0"                     id="middleNameInput2"                     class="form-control" />            </div>          </div>          <hr>          <div class="row align-items-center">            <div class="col-sm-3">              <h6 class="mb-0">Дні дозування</h6>            </div>            <div class="col-sm-9 text-secondary">              <input                      disabled                     #daysLeft="ngModel"                     name="daysLeft"                     [(ngModel)]="changes.daysLeft"                     type="number"                     min="0"                     id="middleNameInput2"                     class="form-control" />            </div>          </div>        </form>      </div>      <div class="modal-footer">        <button data-bs-dismiss="modal" style="margin-right: auto;" type="button" (click)="deleteSchedule(changes.medicationScheduleId)" class="btn btn-danger">Видалити</button>        <button                *ngIf="userRole == \'Patient\'"                [disabled]="!selectedToday"                (click)="submitDose()"                type="button"                class="btn btn-primary"                data-bs-dismiss="modal">          <i class="fa-regular fa-calendar-check"></i>        </button>        <button #closePUT type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>      </div>    </div>  </div></div><ng-template #stillLoading>  Still Loading...</ng-template></div>'
+    var COMPONENTS = [{'name': 'AddMedicineComponent', 'selector': 'app-add-medicine'},{'name': 'AdministratorsComponent', 'selector': 'app-administrators'},{'name': 'AdminPanelComponent', 'selector': 'app-admin-panel'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateAdministratorComponent', 'selector': 'app-create-administrator'},{'name': 'CreateDoctorComponent', 'selector': 'app-create-doctor'},{'name': 'CreateMedicationScheduleComponent', 'selector': 'app-create-medication-schedule'},{'name': 'CreateMedicineComponent', 'selector': 'app-create-medicine'},{'name': 'CreateMessageComponent', 'selector': 'app-create-message'},{'name': 'CreateMessageTypeComponent', 'selector': 'app-create-message-type'},{'name': 'CreatePatientComponent', 'selector': 'app-create-patient'},{'name': 'CreatePatientDoctorComponent', 'selector': 'app-create-patient-doctor'},{'name': 'CreatePatientTrusteeComponent', 'selector': 'app-create-patient-trustee'},{'name': 'CreateScheduleEventComponent', 'selector': 'app-create-schedule-event'},{'name': 'CreateSmartDeviceComponent', 'selector': 'app-create-smart-device'},{'name': 'CreateSmartDeviceTypeComponent', 'selector': 'app-create-smart-device-type'},{'name': 'CreateTrusteeComponent', 'selector': 'app-create-trustee'},{'name': 'DoctorsComponent', 'selector': 'app-doctors'},{'name': 'EditMedicineComponent', 'selector': 'app-edit-medicine'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MedicationSchedulesComponent', 'selector': 'app-medication-schedules'},{'name': 'MedicinesComponent', 'selector': 'app-medicines'},{'name': 'MedicinesViewComponent', 'selector': 'app-medicines-view'},{'name': 'MessagesComponent', 'selector': 'app-messages'},{'name': 'MessagesViewComponent', 'selector': 'app-messages-view'},{'name': 'MessageTypesComponent', 'selector': 'app-message-types'},{'name': 'PatientDoctorsComponent', 'selector': 'app-patient-doctors'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'PatientsViewDoctorComponent', 'selector': 'app-patients-view-doctor'},{'name': 'PatientsViewTrusteeComponent', 'selector': 'app-patients-view-trustee'},{'name': 'PatientTrusteesComponent', 'selector': 'app-patient-trustees'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'PutAdministratorComponent', 'selector': 'app-put-administrator'},{'name': 'PutDoctorComponent', 'selector': 'app-put-doctor'},{'name': 'PutMedicationScheduleComponent', 'selector': 'app-put-medication-schedule'},{'name': 'PutMedicineComponent', 'selector': 'app-put-medicine'},{'name': 'PutMessageComponent', 'selector': 'app-put-message'},{'name': 'PutMessageTypeComponent', 'selector': 'app-put-message-type'},{'name': 'PutPatientComponent', 'selector': 'app-put-patient'},{'name': 'PutSmartDeviceComponent', 'selector': 'app-put-smart-device'},{'name': 'PutSmartDeviceTypeComponent', 'selector': 'app-put-smart-device-type'},{'name': 'PutTrusteeComponent', 'selector': 'app-put-trustee'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegisterDoctorFormComponent', 'selector': 'app-register-doctor-form'},{'name': 'RegisterPatientFormComponent', 'selector': 'app-register-patient-form'},{'name': 'RegisterTrusteeFormComponent', 'selector': 'app-register-trustee-form'},{'name': 'ScheduleEventComponent', 'selector': 'app-schedule-events'},{'name': 'ScheduleViewComponent', 'selector': 'app-schedule-view'},{'name': 'SmartDevicesComponent', 'selector': 'app-smart-devices'},{'name': 'SmartDeviceTypesComponent', 'selector': 'app-smart-device-types'},{'name': 'StatisticsViewComponent', 'selector': 'app-statistics-view'},{'name': 'TrusteesComponent', 'selector': 'app-trustees'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ScheduleViewComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ScheduleViewComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

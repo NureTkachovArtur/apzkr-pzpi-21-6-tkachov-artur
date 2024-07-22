@@ -3,6 +3,7 @@ using medireminder.Dto;
 using medireminder.Interfaces;
 using medireminder.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -217,7 +218,26 @@ namespace medireminder.Repository
                 return new ServiceResponseDto.LoginResponse(false, null, "Invalid email/password");
 
             var userRole = await _userManager.GetRolesAsync(user);
-            var userSession = new UserSessionDto(user.Id, user.UserName, user.Email, userRole.First());
+
+            var recordId = 0;
+            if (userRole.First() == "Patient")
+            {
+                recordId = _context.Patients
+                    .Where(e => e.ApplicationUser.Id ==  user.Id)
+                    .FirstOrDefault().PatientId;
+            } else if (userRole.First() == "Doctor")
+            {
+                recordId = _context.Doctors
+                    .Where(e => e.ApplicationUser.Id == user.Id)
+                    .FirstOrDefault().DoctorId;
+            } else if (userRole.First() == "Trustee")
+            {
+                recordId = _context.Trustees
+                    .Where(e => e.ApplicationUser.Id == user.Id)
+                    .FirstOrDefault().TrusteeId;
+            }
+
+            var userSession = new UserSessionDto(recordId, user.UserName, user.Email, userRole.First());
             string token = GenerateToken(userSession);
 
             return new ServiceResponseDto.LoginResponse(true, token, "Login completed");
@@ -229,7 +249,7 @@ namespace medireminder.Repository
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var userClaims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, userSession.Id),
+                new Claim(ClaimTypes.NameIdentifier, userSession.Id.ToString()),
                 new Claim(ClaimTypes.Name, userSession.Name),
                 new Claim(ClaimTypes.Email, userSession.Email),
                 new Claim(ClaimTypes.Role, userSession.Role)
@@ -246,6 +266,16 @@ namespace medireminder.Repository
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        public async Task<bool> UserExistsByIdAsync(string id)
+        {
+            return await _context.Users.AnyAsync(e => e.Id == id);
+        }
+
+        public async Task<ApplicationUser> GetUserAsync(string id)
+        {
+            return await _context.Users.FindAsync(id);
+        }
+
         public bool UserExistsById(string id)
         {
             return _context.Users.Any(e => e.Id == id);
@@ -253,7 +283,12 @@ namespace medireminder.Repository
 
         public ApplicationUser GetUser(string id)
         {
-            return _context.Users.Where(e => e.Id == id).FirstOrDefault();
+            return _context.Users.Find(id);
+        }
+
+        public ICollection<ApplicationUser> GetUsers()
+        {
+            return _context.Users.OrderBy(e => e.UserName).ToList();
         }
     }
 }

@@ -1,0 +1,23 @@
+.mt-auto {
+  margin-top: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+#centered {
+  margin-top: 25px;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+}

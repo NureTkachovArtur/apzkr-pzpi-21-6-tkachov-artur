@@ -1,0 +1,62 @@
+<app-header></app-header>
+
+<div class="card mb-3" *ngIf="loaded; else stillLoading">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Пацієнт</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <select #patientId="ngModel"
+                name="gender"
+                [(ngModel)]="patientId"
+                id="specializationSelect2"
+                class="form-control"
+                required
+                (change)="setPatient($event)">
+          <option value="" disabled selected>Оберіть пацієнта</option>
+          <option *ngFor="let patient of patients;" value="{{ patientId }}">{{ patient.applicationUser.userName }}</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div *ngIf="patientId">
+      <div class="row align-items-center">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Розклад</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <select #medicalScheduleId="ngModel"
+                  name="medicalScheduleId"
+                  [(ngModel)]="values.medicalScheduleId"
+                  id="specializationSelect21"
+                  class="form-control"
+                  required>
+            <option value="" disabled selected>Оберіть розклад</option>
+            <option *ngFor="let schedule of medicalSchedules;" value="{{ schedule.medicalScheduleId }}">{{ schedule.medicine.name }}</option>
+          </select>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Пропущена доза</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="checkbox" class="form-check-input" [(ngModel)]="values.missedDose">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <a (click)="saveChanges()" class="btn btn-info">Створити</a>
+        <a (click)="getBack()" class="btn btn-info" style="margin-left: 15px;">Скасувати</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

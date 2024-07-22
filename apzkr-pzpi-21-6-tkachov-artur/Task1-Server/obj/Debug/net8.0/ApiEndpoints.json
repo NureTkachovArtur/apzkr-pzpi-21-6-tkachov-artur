@@ -1,6 +1,98 @@
 [
   {
     "ContainingType": "medireminder.Controllers.UserAccountController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Accounts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.ApplicationUser, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.UserAccountController",
+    "Method": "GetUser",
+    "RelativePath": "api/Accounts/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "medireminder.Models.ApplicationUser",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.UserAccountController",
+    "Method": "DeleteProfilePicture",
+    "RelativePath": "api/Accounts/{userId}/delete-profile-picture",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "medireminder.Controllers.UserAccountController",
+    "Method": "UploadProfilePicture",
+    "RelativePath": "api/Accounts/{userId}/upload-profile-picture",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "medireminder.Controllers.UserAccountController",
     "Method": "Login",
     "RelativePath": "api/Accounts/login",
     "HttpMethod": "POST",
@@ -607,6 +699,67 @@
     ]
   },
   {
+    "ContainingType": "medireminder.Controllers.DoctorController",
+    "Method": "UpdateDoctor",
+    "RelativePath": "api/Doctors/uid/{uid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "doctorUpdate",
+        "Type": "medireminder.UpdateDto.DoctorUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.FileController",
+    "Method": "GetFile",
+    "RelativePath": "api/Files/{fileName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fileName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "medireminder.Controllers.MedicationScheduleController",
     "Method": "GetMedicationSchedules",
     "RelativePath": "api/MedicationSchedules",
@@ -794,212 +947,6 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.MedicationSchedule, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
-  },
-  {
-    "ContainingType": "medireminder.Controllers.MedicationStatisticsController",
-    "Method": "GetMedicationStatisticss",
-    "RelativePath": "api/MedicationStatistics",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.MedicationStatistics, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "medireminder.Controllers.MedicationStatisticsController",
-    "Method": "CreateMedicationStatistics",
-    "RelativePath": "api/MedicationStatistics",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "medicationStatisticsCreate",
-        "Type": "medireminder.Dto.MedicationStatisticsDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 204
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
-  },
-  {
-    "ContainingType": "medireminder.Controllers.MedicationStatisticsController",
-    "Method": "GetMedicationStatistics",
-    "RelativePath": "api/MedicationStatistics/{mstatisticsId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "mstatisticsId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "medireminder.Models.MedicationStatistics",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
-  },
-  {
-    "ContainingType": "medireminder.Controllers.MedicationStatisticsController",
-    "Method": "UpdateMedicationStatistics",
-    "RelativePath": "api/MedicationStatistics/{mstatisticsId}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "mstatisticsId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "medicationStatisticsUpdate",
-        "Type": "medireminder.Dto.MedicationStatisticsDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 204
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      }
-    ]
-  },
-  {
-    "ContainingType": "medireminder.Controllers.MedicationStatisticsController",
-    "Method": "DeleteMedicationStatistics",
-    "RelativePath": "api/MedicationStatistics/{mstatisticsId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "mstatisticsId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 204
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      }
-    ]
-  },
-  {
-    "ContainingType": "medireminder.Controllers.MedicationStatisticsController",
-    "Method": "GetMedicationStatisticsByPatient",
-    "RelativePath": "api/MedicationStatistics/patient/{patientId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "patientId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.MedicationStatistics, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1638,6 +1585,26 @@
   },
   {
     "ContainingType": "medireminder.Controllers.PatientDoctorController",
+    "Method": "GetPatientDoctors",
+    "RelativePath": "api/PatientDoctors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.PatientDoctor, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.PatientDoctorController",
     "Method": "CreatePatientDoctor",
     "RelativePath": "api/PatientDoctors",
     "HttpMethod": "POST",
@@ -1670,7 +1637,7 @@
   {
     "ContainingType": "medireminder.Controllers.PatientDoctorController",
     "Method": "UpdatePatientDoctor",
-    "RelativePath": "api/PatientDoctors/{patientId, doctorId}",
+    "RelativePath": "api/PatientDoctors/{patientId}/{doctorId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1678,21 +1645,16 @@
       {
         "Name": "patientId",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "doctorId",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "patientDoctorUpdate",
         "Type": "medireminder.Dto.PatientDoctorDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "patientId, doctorId",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -1725,7 +1687,7 @@
   {
     "ContainingType": "medireminder.Controllers.PatientDoctorController",
     "Method": "DeletePatientDoctor",
-    "RelativePath": "api/PatientDoctors/{patientId, doctorId}",
+    "RelativePath": "api/PatientDoctors/{patientId}/{doctorId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -1733,16 +1695,11 @@
       {
         "Name": "patientId",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "doctorId",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "patientId, doctorId",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -1985,6 +1942,41 @@
   },
   {
     "ContainingType": "medireminder.Controllers.PatientController",
+    "Method": "GetSmartDevicesByPatient",
+    "RelativePath": "api/Patients/devices/{patientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.SmartDevice, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.PatientController",
     "Method": "GetDoctorsByPatient",
     "RelativePath": "api/Patients/doctors/{patientId}",
     "HttpMethod": "GET",
@@ -2090,41 +2082,6 @@
   },
   {
     "ContainingType": "medireminder.Controllers.PatientController",
-    "Method": "GetMedicationStatisticsByPatient",
-    "RelativePath": "api/Patients/medication-statistics/{patientId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "patientId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.MedicationStatistics, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
-  },
-  {
-    "ContainingType": "medireminder.Controllers.PatientController",
     "Method": "GetMedicinesByPatient",
     "RelativePath": "api/Patients/medicines/{patientId}",
     "HttpMethod": "GET",
@@ -2195,6 +2152,41 @@
   },
   {
     "ContainingType": "medireminder.Controllers.PatientController",
+    "Method": "GetMedicationStatisticsByPatient",
+    "RelativePath": "api/Patients/schedule-events/{patientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.ScheduleEvent, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.PatientController",
     "Method": "GetTrusteesByPatient",
     "RelativePath": "api/Patients/trustees/{patientId}",
     "HttpMethod": "GET",
@@ -2225,6 +2217,71 @@
           "text/json"
         ],
         "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.PatientController",
+    "Method": "UpdatePatient",
+    "RelativePath": "api/Patients/uid/{uid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "patientUpdate",
+        "Type": "medireminder.UpdateDto.PatientUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.PatientTrusteeController",
+    "Method": "GetPatientTrustees",
+    "RelativePath": "api/PatientTrustees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.PatientTrustee, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
     ]
   },
@@ -2262,7 +2319,7 @@
   {
     "ContainingType": "medireminder.Controllers.PatientTrusteeController",
     "Method": "UpdatePatientTrustee",
-    "RelativePath": "api/PatientTrustees/{patientId, trusteeId}",
+    "RelativePath": "api/PatientTrustees/{patientId}/{trusteeId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -2270,21 +2327,16 @@
       {
         "Name": "patientId",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "trusteeId",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "patientTrusteeUpdate",
         "Type": "medireminder.Dto.PatientTrusteeDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "patientId, trusteeId",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -2317,7 +2369,7 @@
   {
     "ContainingType": "medireminder.Controllers.PatientTrusteeController",
     "Method": "DeletePatientTrustee",
-    "RelativePath": "api/PatientTrustees/{patientId, trusteeId}",
+    "RelativePath": "api/PatientTrustees/{patientId}/{trusteeId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -2325,16 +2377,11 @@
       {
         "Name": "patientId",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "trusteeId",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "patientId, trusteeId",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -2361,6 +2408,281 @@
           "text/json"
         ],
         "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.ScheduleEventController",
+    "Method": "GetScheduleEvents",
+    "RelativePath": "api/ScheduleEvents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.ScheduleEvent, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.ScheduleEventController",
+    "Method": "CreateScheduleEvent",
+    "RelativePath": "api/ScheduleEvents",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scheduleEventCreate",
+        "Type": "medireminder.Dto.ScheduleEventDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.ScheduleEventController",
+    "Method": "GetScheduleEvent",
+    "RelativePath": "api/ScheduleEvents/{scheduleEventId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scheduleEventId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "medireminder.Models.ScheduleEvent",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.ScheduleEventController",
+    "Method": "UpdateScheduleEvent",
+    "RelativePath": "api/ScheduleEvents/{scheduleEventId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scheduleEventId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "scheduleEventUpdate",
+        "Type": "medireminder.Dto.ScheduleEventDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.ScheduleEventController",
+    "Method": "DeleteScheduleEvent",
+    "RelativePath": "api/ScheduleEvents/{scheduleEventId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scheduleEventId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.ScheduleEventController",
+    "Method": "ActivateScheduleEvent",
+    "RelativePath": "api/ScheduleEvents/activate/{scheduleEventId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scheduleEventId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.ScheduleEventController",
+    "Method": "GetScheduleEventOfToday",
+    "RelativePath": "api/ScheduleEvents/ofToday",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.ScheduleEvent, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.ScheduleEventController",
+    "Method": "GetScheduleEventsByPatient",
+    "RelativePath": "api/ScheduleEvents/patient/{patientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.ScheduleEvent, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       }
     ]
   },
@@ -2532,6 +2854,162 @@
           "text/json"
         ],
         "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.SmartDeviceController",
+    "Method": "ActivateDevice",
+    "RelativePath": "api/SmartDevices/activate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DeviceId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "MedicationScheduleId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.SmartDeviceController",
+    "Method": "GetDeviceInfo",
+    "RelativePath": "api/SmartDevices/deviceInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DeviceId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.SmartDeviceController",
+    "Method": "GetSmartDevicesOfUser",
+    "RelativePath": "api/SmartDevices/patient/{patientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[medireminder.Models.SmartDevice, medireminder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.SmartDeviceController",
+    "Method": "GetWaitingActivationDevices",
+    "RelativePath": "api/SmartDevices/waiting-activation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DeviceId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       }
     ]
   },
@@ -3019,6 +3497,51 @@
           "text/json"
         ],
         "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "medireminder.Controllers.TrusteeController",
+    "Method": "UpdateTrustee",
+    "RelativePath": "api/Trustees/uid/{uid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "trusteeUpdate",
+        "Type": "medireminder.UpdateDto.TrusteeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   }

@@ -1,0 +1,16 @@
+.list-group-item, .form-control {
+  margin-top: 15px;
+  border: 1px darkblue solid;
+}
+
+#centered {
+  margin-top: 25px;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+img {
+    object-fit: cover;
+}

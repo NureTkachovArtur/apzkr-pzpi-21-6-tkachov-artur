@@ -2,6 +2,7 @@
 using medireminder.Dto;
 using medireminder.Interfaces;
 using medireminder.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace medireminder.Repository
 {

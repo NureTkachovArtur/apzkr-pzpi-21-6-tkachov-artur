@@ -35,6 +35,11 @@ namespace medireminder.Repository
                 .FirstOrDefault();
         }
 
+        public MedicationSchedule GetMedicationScheduleByDeviceId(int deviceId)
+        {
+            return _context.MedicationSchedules.Where(e => e.SmartDeviceId == deviceId).FirstOrDefault();
+        }
+
         public ICollection<MedicationSchedule> GetMedicationSchedules()
         {
             return _context.MedicationSchedules

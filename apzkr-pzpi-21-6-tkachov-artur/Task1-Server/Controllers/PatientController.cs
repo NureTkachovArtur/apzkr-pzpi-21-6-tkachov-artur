@@ -14,16 +14,19 @@ namespace medireminder.Controllers
     [ApiController]
     public class PatientController : Controller
     {
-        private readonly IPatientRepository _patientRepository;
+        private readonly IApplicationUserRepository _userRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IPatientRepository _patientRepository;
         private readonly IMapper _mapper;
 
         public PatientController(
-            IPatientRepository patientRepository,
+            IApplicationUserRepository userRepository,
             UserManager<ApplicationUser> userManager,
+            IPatientRepository patientRepository,
             IMapper mapper)
         {
             _patientRepository = patientRepository;
+            _userRepository = userRepository;
             _userManager = userManager;
             _mapper = mapper;
         }
@@ -85,6 +88,21 @@ namespace medireminder.Controllers
             return Ok(messages);
         }
 
+        [HttpGet("devices/{patientId}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<SmartDevice>))]
+        [ProducesResponseType(400)]
+        public IActionResult GetSmartDevicesByPatient(int patientId)
+        {
+            if (!_patientRepository.PatientExists(patientId))
+                return NotFound();
+
+            var smartDevices = _patientRepository.GetSmartDevicesByPatient(patientId);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(smartDevices);
+        }
+
         [HttpGet("medicines/{patientId}")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Medicine>))]
         [ProducesResponseType(400)]
@@ -116,20 +134,20 @@ namespace medireminder.Controllers
             return Ok(medicationSchedules);
         }
 
-        [HttpGet("medication-statistics/{patientId}")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<MedicationStatistics>))]
+        [HttpGet("schedule-events/{patientId}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<ScheduleEvent>))]
         [ProducesResponseType(400)]
         public IActionResult GetMedicationStatisticsByPatient(int patientId)
         {
             if (!_patientRepository.PatientExists(patientId))
                 return NotFound();
 
-            var medicationStatistics = _mapper.Map<List<MedicationStatisticsGetDto>>
-                (_patientRepository.GetMedicationStatisticsByPatient(patientId));
+            var scheduleEvents = _mapper.Map<List<ScheduleEventGetDto>>
+                (_patientRepository.GetScheduleEventsByPatient(patientId));
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(medicationStatistics);
+            return Ok(scheduleEvents);
         }
 
         [HttpGet("doctors/{patientId}")]
@@ -184,8 +202,48 @@ namespace medireminder.Controllers
             return Ok(new { ok = true });
         }
 
+        [HttpPut("uid/{uid}")]
+        [Authorize(Roles = "Administrator,Patient")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult UpdatePatient(string uid, [FromBody] PatientUpdateDto patientUpdate)
+        {
+            if (patientUpdate == null)
+                return BadRequest(ModelState);
+
+            if (!_userRepository.UserExistsById(uid))
+                return NotFound();
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            Patient patient = _patientRepository.GetPatientByUID(uid);
+            ApplicationUser account = patient.ApplicationUser;
+            account.UserName = patientUpdate.UserName;
+            account.LastName = patientUpdate.LastName;
+            account.FirstName = patientUpdate.FirstName;
+            account.MiddleName = patientUpdate.MiddleName;
+            account.Email = patientUpdate.Email;
+            account.PhoneNumber = patientUpdate.PhoneNumber;
+            _userManager.UpdateAsync(account).Wait();
+
+            patient.ApplicationUser = account;
+            patient.Address = patientUpdate.Address;
+            patient.Age = patientUpdate.Age;
+            patient.Gender = patientUpdate.Gender;
+
+            if (!_patientRepository.UpdatePatient(patient))
+            {
+                ModelState.AddModelError("", "Something went wrong updating administrator");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok(new { ok = true });
+        }
+
         [HttpPut("{patientId}")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Patient")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

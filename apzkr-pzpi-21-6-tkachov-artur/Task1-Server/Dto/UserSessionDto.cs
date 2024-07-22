@@ -2,6 +2,6 @@
 {
     public record class UserSessionDto
     (
-        string Id, string Name, string Email, string Role
+        int Id, string Name, string Email, string Role
     );
 }

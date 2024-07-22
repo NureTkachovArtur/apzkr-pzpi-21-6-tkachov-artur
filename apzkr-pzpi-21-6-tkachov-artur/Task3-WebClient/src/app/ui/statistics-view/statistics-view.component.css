@@ -1,0 +1,11 @@
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+#centered {
+  margin-top: 25px;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+}

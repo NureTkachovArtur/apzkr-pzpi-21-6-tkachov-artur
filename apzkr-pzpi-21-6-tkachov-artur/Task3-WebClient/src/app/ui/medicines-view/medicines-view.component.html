@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<div id="content" *ngIf="loaded; else stillLoading" style="margin-bottom: 20px;">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 *ngIf="userRole == 'Patient'">Перелік ліків</h2>
+    <h2 *ngIf="userRole != 'Patient'">Перелік ліків пацієнта {{ patient.applicationUser.userName }}</h2>
+    <button *ngIf="userRole != 'Trustee'" (click)="createMedicine()" class="btn btn-info">Додати</button>
+  </div>
+  <div *ngIf="medicines.length != 0; else empty" class="container mx-auto mt-4">
+    <div class="row gy-3">
+      <div *ngFor="let medicine of medicines" @fadeOut class="col-md-3 d-flex align-items-stretch">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ medicine.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              Залишилося: {{ medicine.quantity }}<br>
+              Дозування: {{ medicine.dosage }}<br>
+              Термін придатності: {{ medicine.expirationDate | date: 'dd/MM/yyyy' }}
+            </h6>
+            <p class="card-text">
+              {{ medicine.instruction }}<br><hr>
+              {{ medicine.description }}
+            </p>
+            <div class="mt-auto">
+              <a
+                 *ngIf="userRole != 'Trustee'"
+                 style="color: lightcoral;"
+                 class="btn mr-2"
+                 (click)="deleteMedicine(medicine.medicineId)">
+                <i class="fa-solid fa-trash"></i>
+              </a>
+              <a
+                 *ngIf="userRole != 'Trustee'"
+                 style="color: blueviolet"
+                 class="btn"
+                 (click)="editMedicine(medicine.medicineId)">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>
+
+<ng-template #empty>
+  <div id="centered">Порожньо</div>
+</ng-template>

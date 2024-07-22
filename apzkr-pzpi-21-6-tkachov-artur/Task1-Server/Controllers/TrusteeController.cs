@@ -3,7 +3,6 @@ using medireminder.Dto;
 using medireminder.GetDto;
 using medireminder.Interfaces;
 using medireminder.Models;
-using medireminder.Repository;
 using medireminder.UpdateDto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -15,16 +14,19 @@ namespace medireminder.Controllers
     [ApiController]
     public class TrusteeController : Controller
     {
-        private readonly ITrusteeRepository _trusteeRepository;
+        private readonly IApplicationUserRepository _userRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ITrusteeRepository _trusteeRepository;
         private readonly IMapper _mapper;
 
         public TrusteeController(
-            ITrusteeRepository trusteeRepository,
+            IApplicationUserRepository userRepository,
             UserManager<ApplicationUser> userManager,
+            ITrusteeRepository trusteeRepository,
             IMapper mapper)
         {
             _trusteeRepository = trusteeRepository;
+            _userRepository = userRepository;
             _userManager = userManager;
             _mapper = mapper;
         }
@@ -108,8 +110,45 @@ namespace medireminder.Controllers
             return Ok(new { ok = true });
         }
 
+        [HttpPut("uid/{uid}")]
+        [Authorize(Roles = "Administrator,Trustee")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult UpdateTrustee(string uid, [FromBody] TrusteeUpdateDto trusteeUpdate)
+        {
+            if (trusteeUpdate == null)
+                return BadRequest(ModelState);
+
+            if (!_userRepository.UserExistsById(uid))
+                return NotFound();
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            Trustee trustee = _trusteeRepository.GetTrusteeByUID(uid);
+            ApplicationUser account = trustee.ApplicationUser;
+            account.UserName = trusteeUpdate.UserName;
+            account.LastName = trusteeUpdate.LastName;
+            account.FirstName = trusteeUpdate.FirstName;
+            account.MiddleName = trusteeUpdate.MiddleName;
+            account.Email = trusteeUpdate.Email;
+            account.PhoneNumber = trusteeUpdate.PhoneNumber;
+            _userManager.UpdateAsync(account).Wait();
+
+            trustee.ApplicationUser = account;
+
+            if (!_trusteeRepository.UpdateTrustee(trustee))
+            {
+                ModelState.AddModelError("", "Something went wrong updating administrator");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok(new { ok = true });
+        }
+
         [HttpPut("{trusteeId}")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Trustee")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

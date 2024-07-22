@@ -1,0 +1,57 @@
+<div class="container" id="header">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <b style="font-size: 18px;font-weight: 600;">MediReminder</b>
+    </a>
+
+    <ul *ngIf="!isLoggedIn" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="#" class="nav-link px-2 link-dark">Головна</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">Про сервіс</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">Ціни</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">Про нас</a></li>
+    </ul>
+
+    <ul *ngIf="isLoggedIn && userInfo.role == 'Patient'" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a [routerLink]="['/profile']" class="nav-link px-2 link-dark">Профіль</a></li>
+      <li><a [routerLink]="['/medicines', userInfo.id]" class="nav-link px-2 link-dark">Ліки</a></li>
+      <li><a [routerLink]="['/messages']" class="nav-link px-2 link-dark">Повідомлення</a></li>
+      <li><a [routerLink]="['/schedule', userInfo.id]" class="nav-link px-2 link-dark">Розклад</a></li>
+      <li><a [routerLink]="['/statistics', userInfo.id]" class="nav-link px-2 link-dark">Статистика</a></li>
+    </ul>
+
+    <ul *ngIf="isLoggedIn && userInfo.role == 'Doctor'" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a [routerLink]="['/profile']" class="nav-link px-2 link-dark">Профіль</a></li>
+      <li><a [routerLink]="['/messages']" class="nav-link px-2 link-dark">Повідомлення</a></li>
+      <li><a [routerLink]="['/patients']" class="nav-link px-2 link-dark">Пацієнти</a></li>
+    </ul>
+
+    <ul *ngIf="isLoggedIn && userInfo.role == 'Trustee'" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a [routerLink]="['/profile']" class="nav-link px-2 link-dark">Профіль</a></li>
+      <li><a [routerLink]="['/messages']" class="nav-link px-2 link-dark">Повідомлення</a></li>
+      <li><a [routerLink]="['/observables']" class="nav-link px-2 link-dark">Спостереження</a></li>
+    </ul>
+
+    <ul *ngIf="isLoggedIn && userInfo.role == 'Administrator'" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a [routerLink]="['/admin-panel']" class="nav-link px-2 link-dark">Панель адміністрування</a></li>
+    </ul>
+
+    <div *ngIf="!isLoggedIn; else elseBlock" class="col-md-3 text-end">
+      <button [routerLink]="['/login']" type="button" class="btn btn-outline-primary me-2">Вхід</button>
+      <button [routerLink]="['/register']" type="button" class="btn btn-primary">Реєстрація</button>
+    </div>
+    <ng-template #elseBlock>
+      <div class="text-end">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-9">
+            <div>Вітаємо, {{ userInfo.userName }}</div>
+            <div><small>{{ userInfo.roleUKR }}</small></div>
+          </div>
+          <div class="col-md-3">
+            <button (click)="logout()" type="button" class="btn btn-outline-primary">Вихід</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </header>
+</div>

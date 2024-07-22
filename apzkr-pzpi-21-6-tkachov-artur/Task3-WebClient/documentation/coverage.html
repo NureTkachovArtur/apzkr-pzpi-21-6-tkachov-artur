@@ -1,0 +1,1389 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>medireminder-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">medireminder-client documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content coverage">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Documentation coverage</li>
+</ol>
+
+<div>
+    <img src="./images/coverage-badge-documentation.svg">
+</div>
+
+<table class="table table-bordered coverage" id="coverage-table">
+    <thead class="coverage-header">
+        <tr>
+            <th>File</th>
+            <th>Type</th>
+            <th>Identifier</th>
+            <th style="text-align:right" class="statements" data-sort-default>Statements</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AppComponent.html">src/app/app.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AppComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#authorizedGuard">src/app/guards/authorized.guard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>authorizedGuard</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#isAdminGuard">src/app/guards/is-admin.guard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>isAdminGuard</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#notAuthorizedGuard">src/app/guards/not-authorized.guard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>notAuthorizedGuard</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/functions.html#addMinutesToDate">src/app/helpers/index.ts</a>
+            </td>
+            <td>function</td>
+            <td>addMinutesToDate</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/functions.html#changeDayInDate">src/app/helpers/index.ts</a>
+            </td>
+            <td>function</td>
+            <td>changeDayInDate</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/functions.html#compDicts">src/app/helpers/index.ts</a>
+            </td>
+            <td>function</td>
+            <td>compDicts</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/functions.html#createEventId">src/app/helpers/index.ts</a>
+            </td>
+            <td>function</td>
+            <td>createEventId</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/functions.html#currentDate">src/app/helpers/index.ts</a>
+            </td>
+            <td>function</td>
+            <td>currentDate</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/functions.html#date2minutes">src/app/helpers/index.ts</a>
+            </td>
+            <td>function</td>
+            <td>date2minutes</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#eventGuid">src/app/helpers/index.ts</a>
+            </td>
+            <td>variable</td>
+            <td>eventGuid</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interceptors/AuthInterceptor.html">src/app/interceptors/auth-interceptor.interceptor.ts</a>
+            </td>
+            <td>interceptor</td>
+            <td>AuthInterceptor</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/HeaderComponent.html">src/app/reusable/header/header.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>HeaderComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/User.html">src/app/services/auth/auth.service.ts</a>
+            </td>
+            <td>class</td>
+            <td>User</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/AuthService.html">src/app/services/auth/auth.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>AuthService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/21)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#rolesToUKR">src/app/services/auth/auth.service.ts</a>
+            </td>
+            <td>variable</td>
+            <td>rolesToUKR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AdminPanelComponent.html">src/app/ui/admin-panel/admin-panel.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AdminPanelComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/17)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AdministratorsComponent.html">src/app/ui/admin-panel/administrators/administrators.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AdministratorsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateAdministratorComponent.html">src/app/ui/admin-panel/administrators/create-administrator/create-administrator.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateAdministratorComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/administrators/create-administrator/create-administrator.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutAdministratorComponent.html">src/app/ui/admin-panel/administrators/put-administrator/put-administrator.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutAdministratorComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/administrators/put-administrator/put-administrator.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateDoctorComponent.html">src/app/ui/admin-panel/doctors/create-doctor/create-doctor.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateDoctorComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/doctors/create-doctor/create-doctor.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/DoctorsComponent.html">src/app/ui/admin-panel/doctors/doctors.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DoctorsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutDoctorComponent.html">src/app/ui/admin-panel/doctors/put-doctor/put-doctor.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutDoctorComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/doctors/put-doctor/put-doctor.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateMedicationScheduleComponent.html">src/app/ui/admin-panel/medication-schedules/create-medication-schedule/create-medication-schedule.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateMedicationScheduleComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/medication-schedules/create-medication-schedule/create-medication-schedule.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/MedicationSchedulesComponent.html">src/app/ui/admin-panel/medication-schedules/medication-schedules.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>MedicationSchedulesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutMedicationScheduleComponent.html">src/app/ui/admin-panel/medication-schedules/put-medication-schedule/put-medication-schedule.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutMedicationScheduleComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/19)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/medication-schedules/put-medication-schedule/put-medication-schedule.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateMedicineComponent.html">src/app/ui/admin-panel/medicines/create-medicine/create-medicine.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateMedicineComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/medicines/create-medicine/create-medicine.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/MedicinesComponent.html">src/app/ui/admin-panel/medicines/medicines.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>MedicinesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/17)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutMedicineComponent.html">src/app/ui/admin-panel/medicines/put-medicine/put-medicine.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutMedicineComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/medicines/put-medicine/put-medicine.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateMessageTypeComponent.html">src/app/ui/admin-panel/message-types/create-message-type/create-message-type.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateMessageTypeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/message-types/create-message-type/create-message-type.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/MessageTypesComponent.html">src/app/ui/admin-panel/message-types/message-types.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>MessageTypesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutMessageTypeComponent.html">src/app/ui/admin-panel/message-types/put-message-type/put-message-type.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutMessageTypeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/message-types/put-message-type/put-message-type.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateMessageComponent.html">src/app/ui/admin-panel/messages/create-message/create-message.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateMessageComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/messages/create-message/create-message.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/MessagesComponent.html">src/app/ui/admin-panel/messages/messages.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>MessagesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutMessageComponent.html">src/app/ui/admin-panel/messages/put-message/put-message.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutMessageComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/18)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/messages/put-message/put-message.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreatePatientDoctorComponent.html">src/app/ui/admin-panel/patient-doctors/create-patient-doctor/create-patient-doctor.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreatePatientDoctorComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/patient-doctors/create-patient-doctor/create-patient-doctor.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PatientDoctorsComponent.html">src/app/ui/admin-panel/patient-doctors/patient-doctors.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PatientDoctorsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreatePatientTrusteeComponent.html">src/app/ui/admin-panel/patient-trustees/create-patient-trustee/create-patient-trustee.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreatePatientTrusteeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/patient-trustees/create-patient-trustee/create-patient-trustee.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PatientTrusteesComponent.html">src/app/ui/admin-panel/patient-trustees/patient-trustees.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PatientTrusteesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreatePatientComponent.html">src/app/ui/admin-panel/patients/create-patient/create-patient.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreatePatientComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/patients/create-patient/create-patient.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PatientsComponent.html">src/app/ui/admin-panel/patients/patients.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PatientsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutPatientComponent.html">src/app/ui/admin-panel/patients/put-patient/put-patient.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutPatientComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/patients/put-patient/put-patient.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/11)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateScheduleEventComponent.html">src/app/ui/admin-panel/schedule-events/create-schedule-event/create-schedule-event.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateScheduleEventComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/schedule-events/create-schedule-event/create-schedule-event.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ScheduleEventComponent.html">src/app/ui/admin-panel/schedule-events/schedule-events.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ScheduleEventComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateSmartDeviceTypeComponent.html">src/app/ui/admin-panel/smart-device-types/create-smart-device-type/create-smart-device-type.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateSmartDeviceTypeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/smart-device-types/create-smart-device-type/create-smart-device-type.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutSmartDeviceTypeComponent.html">src/app/ui/admin-panel/smart-device-types/put-smart-device-type/put-smart-device-type.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutSmartDeviceTypeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/smart-device-types/put-smart-device-type/put-smart-device-type.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/SmartDeviceTypesComponent.html">src/app/ui/admin-panel/smart-device-types/smart-device-types.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SmartDeviceTypesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateSmartDeviceComponent.html">src/app/ui/admin-panel/smart-devices/create-smart-device/create-smart-device.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateSmartDeviceComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/smart-devices/create-smart-device/create-smart-device.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutSmartDeviceComponent.html">src/app/ui/admin-panel/smart-devices/put-smart-device/put-smart-device.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutSmartDeviceComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/17)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/smart-devices/put-smart-device/put-smart-device.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/SmartDevicesComponent.html">src/app/ui/admin-panel/smart-devices/smart-devices.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SmartDevicesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreateTrusteeComponent.html">src/app/ui/admin-panel/trustees/create-trustee/create-trustee.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreateTrusteeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/POSTValues.html">src/app/ui/admin-panel/trustees/create-trustee/create-trustee.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>POSTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PutTrusteeComponent.html">src/app/ui/admin-panel/trustees/put-trustee/put-trustee.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PutTrusteeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/admin-panel/trustees/put-trustee/put-trustee.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/TrusteesComponent.html">src/app/ui/admin-panel/trustees/trustees.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>TrusteesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/HomeComponent.html">src/app/ui/home/home.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>HomeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/LoginComponent.html">src/app/ui/login/login.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>LoginComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/LoginData.html">src/app/ui/login/login.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>LoginData</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AddMedicineComponent.html">src/app/ui/medicines-view/add-medicine/add-medicine.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AddMedicineComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/EditMedicineComponent.html">src/app/ui/medicines-view/edit-medicine/edit-medicine.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>EditMedicineComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/MedicinesViewComponent.html">src/app/ui/medicines-view/medicines-view.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>MedicinesViewComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/MessagesViewComponent.html">src/app/ui/messages-view/messages-view.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>MessagesViewComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PatientsViewDoctorComponent.html">src/app/ui/patients-view-doctor/patients-view-doctor.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PatientsViewDoctorComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PatientsViewTrusteeComponent.html">src/app/ui/patients-view-trustee/patients-view-trustee.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PatientsViewTrusteeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/EditProfileComponent.html">src/app/ui/profile/edit-profile/edit-profile.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>EditProfileComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/PUTValues.html">src/app/ui/profile/edit-profile/edit-profile.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>PUTValues</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/11)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ProfileComponent.html">src/app/ui/profile/profile.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ProfileComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/26)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/RegisterDoctorFormComponent.html">src/app/ui/register/register-doctor-form/register-doctor-form.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>RegisterDoctorFormComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/RegisterData.html">src/app/ui/register/register-doctor-form/register-doctor-form.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>RegisterData</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/RegisterPatientFormComponent.html">src/app/ui/register/register-patient-form/register-patient-form.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>RegisterPatientFormComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/RegisterData.html">src/app/ui/register/register-patient-form/register-patient-form.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>RegisterData</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/RegisterTrusteeFormComponent.html">src/app/ui/register/register-trustee-form/register-trustee-form.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>RegisterTrusteeFormComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/RegisterData.html">src/app/ui/register/register-trustee-form/register-trustee-form.model.ts</a>
+            </td>
+            <td>class</td>
+            <td>RegisterData</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/RegisterComponent.html">src/app/ui/register/register.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>RegisterComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ScheduleViewComponent.html">src/app/ui/schedule-view/schedule-view.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ScheduleViewComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/40)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/StatisticsViewComponent.html">src/app/ui/statistics-view/statistics-view.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>StatisticsViewComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#environment">src/environments/environment.development.ts</a>
+            </td>
+            <td>variable</td>
+            <td>environment</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#environment">src/environments/environment.ts</a>
+            </td>
+            <td>variable</td>
+            <td>environment</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="js/libs/tablesort.min.js"></script>
+<script src="js/libs/tablesort.number.min.js"></script>
+<script>
+    new Tablesort(document.getElementById('coverage-table'));
+</script>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'coverage';
+            var COMPODOC_CURRENT_PAGE_URL = 'coverage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -26,6 +26,11 @@ namespace medireminder.Repository
             return Save();
         }
 
+        public SmartDevice GetLast()
+        {
+            return _context.SmartDevices.OrderByDescending(e => e.SmartDeviceId).FirstOrDefault();
+        }
+
         public SmartDevice GetSmartDevice(int smartDeviceId)
         {
             return _context.SmartDevices
@@ -33,10 +38,25 @@ namespace medireminder.Repository
                 .FirstOrDefault();
         }
 
+        public SmartDevice GetSmartDeviceByIdAndToken(int smartDeviceId, string token)
+        {
+            return _context.SmartDevices
+                .Where(e => (e.SmartDeviceId == smartDeviceId) && (e.AuthenticationToken == token))
+                .FirstOrDefault();
+        }
+
         public ICollection<SmartDevice> GetSmartDevices()
         {
             return _context.SmartDevices
                 .OrderBy(e => e.SmartDeviceId)
+                .ToList();
+        }
+
+        public ICollection<SmartDevice> GetSmartDevicesOfPatient(int patientId)
+        {
+            return _context.SmartDevices
+                .Where(e => e.PatientId  == patientId)
+                .Include(e => e.SmartDeviceType)
                 .ToList();
         }
 

@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div id="registration">
+
+  <!-- User Type input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="userTypeSelect">Тип користувача</label>
+    <select userType="ngModel"
+            name="userType"
+            [(ngModel)]="userType"
+            id="userTypeSelect"
+            class="form-control"
+            required>
+      <option value="" disabled selected>Оберіть тип користувача</option>
+      <option value="Patient">Пацієнт</option>
+      <option value="Doctor">Доктор</option>
+      <option value="Trustee">Опікун</option>
+    </select>
+  </div>
+
+  <ng-template [ngIf]="userType == 'Patient'">
+    <app-register-patient-form [createView]="createView" (onSubmitEvent)="registerPatient($event)"></app-register-patient-form>
+  </ng-template>
+  <ng-template [ngIf]="userType == 'Doctor'">
+    <app-register-doctor-form [createView]="createView" (onSubmitEvent)="registerDoctor($event)"></app-register-doctor-form>
+  </ng-template>
+  <ng-template [ngIf]="userType == 'Trustee'">
+    <app-register-trustee-form [createView]="createView" (onSubmitEvent)="registerTrustee($event)"></app-register-trustee-form>
+  </ng-template>
+
+</div>

@@ -1,6 +1,7 @@
 ﻿using medireminder.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace medireminder.Data
 {
@@ -11,7 +12,7 @@ namespace medireminder.Data
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<MedicationSchedule> MedicationSchedules { get; set; }
-        public DbSet<MedicationStatistics> MedicationStatistics { get; set; }
+        public DbSet<ScheduleEvent> ScheduleEvents { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<MessageType> MessageTypes { get; set; }
@@ -36,11 +37,6 @@ namespace medireminder.Data
                 .OnDelete(DeleteBehavior.Cascade);
             builder.Entity<Patient>()
                 .HasMany(e => e.MedicationSchedules)
-                .WithOne(e => e.Patient)
-                .HasForeignKey(e => e.PatientId)
-                .OnDelete(DeleteBehavior.Restrict);
-            builder.Entity<Patient>()
-                .HasMany(e => e.MedicationStatistics)
                 .WithOne(e => e.Patient)
                 .HasForeignKey(e => e.PatientId)
                 .OnDelete(DeleteBehavior.Restrict);
@@ -84,6 +80,12 @@ namespace medireminder.Data
                 .HasForeignKey(e => e.SmartDeviceTypeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.Entity<MedicationSchedule>()
+                .HasMany(e => e.ScheduleEvents)
+                .WithOne(e => e.MedicationSchedule)
+                .HasForeignKey(e => e.MedicationScheduleId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.Entity<PatientDoctor>()
                 .HasKey(e => new { e.PatientId, e.DoctorId });
             builder.Entity<PatientDoctor>()
@@ -106,11 +108,15 @@ namespace medireminder.Data
                 .WithMany(e => e.PatientTrustees)
                 .HasForeignKey(e => e.TrusteeId);
 
-            builder.Entity<MedicationSchedule>()
-                .HasOne(e => e.SmartDevice)
-                .WithMany(e => e.MedicationSchedules)
-                .HasForeignKey(e => e.SmartDeviceId)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<SmartDevice>()
+                .HasOne(sd => sd.Patient)
+                .WithMany(p => p.SmartDevices)
+                .HasForeignKey(sd => sd.PatientId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            builder.Entity<SmartDevice>()
+                .Property(b => b.IsActive)
+                .HasDefaultValue(false);
 
             base.OnModelCreating(builder);
         }

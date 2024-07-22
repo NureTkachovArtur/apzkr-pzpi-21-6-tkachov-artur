@@ -13,16 +13,19 @@ namespace medireminder.Controllers
     public class MedicationScheduleController : Controller
     {
         private readonly IMedicationScheduleRepository _medicationScheduleRepository;
+        private readonly IScheduleEventRepository _eventRepository;
         private readonly IPatientRepository _patientRepository;
         private readonly IMapper _mapper;
 
         public MedicationScheduleController(
             IMedicationScheduleRepository medicationScheduleRepository,
+            IScheduleEventRepository eventRepository,
             IPatientRepository patientRepository,
             IMapper mapper)
         {
             _medicationScheduleRepository = medicationScheduleRepository;
             _patientRepository = patientRepository;
+            _eventRepository = eventRepository;
             _mapper = mapper;
         }
 
@@ -70,7 +73,7 @@ namespace medireminder.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Doctor,Patient")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public IActionResult CreateMedicationSchedule([FromBody] MedicationScheduleDto medicationScheduleCreate)
@@ -84,7 +87,13 @@ namespace medireminder.Controllers
             var _medicationScheduleMap = _mapper.Map<MedicationSchedule>(medicationScheduleCreate);
             if (!_medicationScheduleRepository.CreateMedicationSchedule(_medicationScheduleMap))
             {
-                ModelState.AddModelError("", "Something went wrong while saving");
+                ModelState.AddModelError("", "Something went wrong while saving schedule");
+                return StatusCode(500, ModelState);
+            }
+
+            if (!_eventRepository.CreateEventsToSchedule(_medicationScheduleMap))
+            {
+                ModelState.AddModelError("", "Something went wrong while saving schedule events");
                 return StatusCode(500, ModelState);
             }
 
@@ -92,7 +101,7 @@ namespace medireminder.Controllers
         }
 
         [HttpPut("{msheduleId}")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Doctor,Patient")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -118,7 +127,7 @@ namespace medireminder.Controllers
         }
 
         [HttpDelete("{msheduleId}")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Doctor,Patient")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

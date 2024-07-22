@@ -1,0 +1,116 @@
+<app-header></app-header>
+
+<div class="card mb-3" *ngIf="loaded; else stillLoading">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Нікнейм</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.userName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Прізвище</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.lastName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Ім'я</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.firstName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">По-батькові</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.middleName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Стать</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <select #gender="ngModel"
+                name="gender"
+                [(ngModel)]="changes.gender"
+                id="specializationSelect2"
+                class="form-control"
+                required>
+          <option value="" disabled selected>Оберіть Вашу стать</option>
+          <option value="f">Жінка</option>
+          <option value="m">Чоловік</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Адреса</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input #address="ngModel"
+               name="address"
+               [(ngModel)]="changes.address"
+               type="text"
+               id="middleNameInput1"
+               class="form-control" />
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Вік</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input #age="ngModel"
+               name="age"
+               [(ngModel)]="changes.age"
+               type="number"
+               id="middleNameInput2"
+               class="form-control" />
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Email</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.email">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Телефон</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.phoneNumber">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <a (click)="saveChanges()" class="btn btn-info">Зберегти</a>
+        <a (click)="getBack()" class="btn btn-info" style="margin-left: 15px;">Скасувати</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

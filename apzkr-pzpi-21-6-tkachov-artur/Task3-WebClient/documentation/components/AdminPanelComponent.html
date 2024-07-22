@@ -1,0 +1,1159 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>medireminder-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">medireminder-client documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AdminPanelComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/ui/admin-panel/admin-panel.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-admin-panel</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./admin-panel.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./admin-panel.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activated" >activated</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activateAdministrators" >activateAdministrators</a>
+                            </li>
+                            <li>
+                                <a href="#activateDoctors" >activateDoctors</a>
+                            </li>
+                            <li>
+                                <a href="#activateMedicationSchedules" >activateMedicationSchedules</a>
+                            </li>
+                            <li>
+                                <a href="#activateMedicines" >activateMedicines</a>
+                            </li>
+                            <li>
+                                <a href="#activateMessages" >activateMessages</a>
+                            </li>
+                            <li>
+                                <a href="#activateMessageTypes" >activateMessageTypes</a>
+                            </li>
+                            <li>
+                                <a href="#activatePatientDoctors" >activatePatientDoctors</a>
+                            </li>
+                            <li>
+                                <a href="#activatePatients" >activatePatients</a>
+                            </li>
+                            <li>
+                                <a href="#activatePatientTrustees" >activatePatientTrustees</a>
+                            </li>
+                            <li>
+                                <a href="#activateScheduleEvents" >activateScheduleEvents</a>
+                            </li>
+                            <li>
+                                <a href="#activateSmartDevices" >activateSmartDevices</a>
+                            </li>
+                            <li>
+                                <a href="#activateSmartDeviceTypes" >activateSmartDeviceTypes</a>
+                            </li>
+                            <li>
+                                <a href="#activateTrustees" >activateTrustees</a>
+                            </li>
+                            <li>
+                                <a href="#deactivate" >deactivate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:10</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateAdministrators"></a>
+                    <span class="name">
+                        <span ><b>activateAdministrators</b></span>
+                        <a href="#activateAdministrators"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateAdministrators()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateDoctors"></a>
+                    <span class="name">
+                        <span ><b>activateDoctors</b></span>
+                        <a href="#activateDoctors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateDoctors()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateMedicationSchedules"></a>
+                    <span class="name">
+                        <span ><b>activateMedicationSchedules</b></span>
+                        <a href="#activateMedicationSchedules"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateMedicationSchedules()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateMedicines"></a>
+                    <span class="name">
+                        <span ><b>activateMedicines</b></span>
+                        <a href="#activateMedicines"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateMedicines()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateMessages"></a>
+                    <span class="name">
+                        <span ><b>activateMessages</b></span>
+                        <a href="#activateMessages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateMessages()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateMessageTypes"></a>
+                    <span class="name">
+                        <span ><b>activateMessageTypes</b></span>
+                        <a href="#activateMessageTypes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateMessageTypes()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activatePatientDoctors"></a>
+                    <span class="name">
+                        <span ><b>activatePatientDoctors</b></span>
+                        <a href="#activatePatientDoctors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activatePatientDoctors()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activatePatients"></a>
+                    <span class="name">
+                        <span ><b>activatePatients</b></span>
+                        <a href="#activatePatients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activatePatients()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activatePatientTrustees"></a>
+                    <span class="name">
+                        <span ><b>activatePatientTrustees</b></span>
+                        <a href="#activatePatientTrustees"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activatePatientTrustees()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateScheduleEvents"></a>
+                    <span class="name">
+                        <span ><b>activateScheduleEvents</b></span>
+                        <a href="#activateScheduleEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateScheduleEvents()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateSmartDevices"></a>
+                    <span class="name">
+                        <span ><b>activateSmartDevices</b></span>
+                        <a href="#activateSmartDevices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateSmartDevices()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateSmartDeviceTypes"></a>
+                    <span class="name">
+                        <span ><b>activateSmartDeviceTypes</b></span>
+                        <a href="#activateSmartDeviceTypes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateSmartDeviceTypes()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activateTrustees"></a>
+                    <span class="name">
+                        <span ><b>activateTrustees</b></span>
+                        <a href="#activateTrustees"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activateTrustees()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deactivate"></a>
+                    <span class="name">
+                        <span ><b>deactivate</b></span>
+                        <a href="#deactivate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deactivate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activated"></a>
+                    <span class="name">
+                        <span ><b>activated</b></span>
+                        <a href="#activated"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/ui/admin-panel/admin-panel.component.ts:10</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+
+@Component({
+  selector: &#x27;app-admin-panel&#x27;,
+  templateUrl: &#x27;./admin-panel.component.html&#x27;,
+  styleUrl: &#x27;./admin-panel.component.css&#x27;
+})
+export class AdminPanelComponent {
+
+  activated: any &#x3D; {}
+
+  constructor() {
+    this.activated &#x3D; {
+      administrators: true,
+      doctors: false,
+      medicationSchedules: false,
+      scheduleEvents: false,
+      medicines: false,
+      messages: false,
+      messageTypes: false,
+      patientDoctors: false,
+      patients: false,
+      patientTrustees: false,
+      smartDevices: false,
+      smartDeviceTypes: false,
+      trustees: false
+    }
+  }
+
+  deactivate() {
+    for (let key in this.activated) {
+      if (this.activated[key]) {
+        this.activated[key] &#x3D; false;
+        return;
+      }
+    }
+  }
+
+  activateAdministrators() {
+    if (this.activated.administrators) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.administrators &#x3D; true;
+  }
+
+  activateDoctors() {
+    if (this.activated.doctors) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.doctors &#x3D; true;
+  }
+
+  activateMedicationSchedules() {
+    if (this.activated.medicationSchedules) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.medicationSchedules &#x3D; true;
+  }
+
+  activateScheduleEvents() {
+    if (this.activated.scheduleEvents) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.scheduleEvents &#x3D; true;
+  }
+
+  activateMedicines() {
+    if (this.activated.medicines) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.medicines &#x3D; true;
+  }
+
+  activateMessages() {
+    if (this.activated.messages) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.messages &#x3D; true;
+  }
+
+  activateMessageTypes() {
+    if (this.activated.messageTypes) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.messageTypes &#x3D; true;
+  }
+
+  activatePatientDoctors() {
+    if (this.activated.patientDoctors) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.patientDoctors &#x3D; true;
+  }
+
+  activatePatients() {
+    if (this.activated.patients) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.patients &#x3D; true;
+  }
+
+  activatePatientTrustees() {
+    if (this.activated.patientTrustees) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.patientTrustees &#x3D; true;
+  }
+
+  activateSmartDevices() {
+    if (this.activated.smartDevices) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.smartDevices &#x3D; true;
+  }
+
+  activateSmartDeviceTypes() {
+    if (this.activated.smartDeviceTypes) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.smartDeviceTypes &#x3D; true;
+  }
+
+  activateTrustees() {
+    if (this.activated.trustees) {
+      return;
+    }
+
+    this.deactivate();
+    this.activated.trustees &#x3D; true;
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-header&gt;&lt;/app-header&gt;
+
+&lt;div class&#x3D;&quot;sidebar&quot;&gt;
+  &lt;a (click)&#x3D;&quot;activateAdministrators()&quot; id&#x3D;&quot;first-element&quot;&gt;Адміністратори&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activateDoctors()&quot;&gt;Лікарі&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activateMedicationSchedules()&quot;&gt;Розклади&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activateScheduleEvents()&quot;&gt;Події&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activateMedicines()&quot;&gt;Ліки&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activateMessages()&quot;&gt;Повідомлення&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activateMessageTypes()&quot;&gt;Типи повідомлень&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activatePatientDoctors()&quot;&gt;Пацієнт-Лікар&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activatePatients()&quot;&gt;Пацієнти&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activatePatientTrustees()&quot;&gt;Пацієнт-Опікун&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activateSmartDevices()&quot;&gt;Розумні пристрої&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activateSmartDeviceTypes()&quot;&gt;Типи пристроїв&lt;/a&gt;
+  &lt;a (click)&#x3D;&quot;activateTrustees()&quot; id&#x3D;&quot;last-element&quot;&gt;Опікуни&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;content&quot;&gt;
+  &lt;app-administrators *ngIf&#x3D;&quot;activated.administrators&quot;&gt;&lt;/app-administrators&gt;
+  &lt;app-doctors *ngIf&#x3D;&quot;activated.doctors&quot;&gt;&lt;/app-doctors&gt;
+  &lt;app-medication-schedules *ngIf&#x3D;&quot;activated.medicationSchedules&quot;&gt;&lt;/app-medication-schedules&gt;
+  &lt;app-schedule-events *ngIf&#x3D;&quot;activated.scheduleEvents&quot;&gt;&lt;/app-schedule-events&gt;
+  &lt;app-medicines *ngIf&#x3D;&quot;activated.medicines&quot;&gt;&lt;/app-medicines&gt;
+  &lt;app-messages *ngIf&#x3D;&quot;activated.messages&quot;&gt;&lt;/app-messages&gt;
+  &lt;app-message-types *ngIf&#x3D;&quot;activated.messageTypes&quot;&gt;&lt;/app-message-types&gt;
+  &lt;app-patient-doctors *ngIf&#x3D;&quot;activated.patientDoctors&quot;&gt;&lt;/app-patient-doctors&gt;
+  &lt;app-patients *ngIf&#x3D;&quot;activated.patients&quot;&gt;&lt;/app-patients&gt;
+  &lt;app-patient-trustees *ngIf&#x3D;&quot;activated.patientTrustees&quot;&gt;&lt;/app-patient-trustees&gt;
+  &lt;app-smart-devices *ngIf&#x3D;&quot;activated.smartDevices&quot;&gt;&lt;/app-smart-devices&gt;
+  &lt;app-smart-device-types *ngIf&#x3D;&quot;activated.smartDeviceTypes&quot;&gt;&lt;/app-smart-device-types&gt;
+  &lt;app-trustees *ngIf&#x3D;&quot;activated.trustees&quot;&gt;&lt;/app-trustees&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-header></app-header><div class="sidebar">  <a (click)="activateAdministrators()" id="first-element">Адміністратори</a>  <a (click)="activateDoctors()">Лікарі</a>  <a (click)="activateMedicationSchedules()">Розклади</a>  <a (click)="activateScheduleEvents()">Події</a>  <a (click)="activateMedicines()">Ліки</a>  <a (click)="activateMessages()">Повідомлення</a>  <a (click)="activateMessageTypes()">Типи повідомлень</a>  <a (click)="activatePatientDoctors()">Пацієнт-Лікар</a>  <a (click)="activatePatients()">Пацієнти</a>  <a (click)="activatePatientTrustees()">Пацієнт-Опікун</a>  <a (click)="activateSmartDevices()">Розумні пристрої</a>  <a (click)="activateSmartDeviceTypes()">Типи пристроїв</a>  <a (click)="activateTrustees()" id="last-element">Опікуни</a></div><div class="content">  <app-administrators *ngIf="activated.administrators"></app-administrators>  <app-doctors *ngIf="activated.doctors"></app-doctors>  <app-medication-schedules *ngIf="activated.medicationSchedules"></app-medication-schedules>  <app-schedule-events *ngIf="activated.scheduleEvents"></app-schedule-events>  <app-medicines *ngIf="activated.medicines"></app-medicines>  <app-messages *ngIf="activated.messages"></app-messages>  <app-message-types *ngIf="activated.messageTypes"></app-message-types>  <app-patient-doctors *ngIf="activated.patientDoctors"></app-patient-doctors>  <app-patients *ngIf="activated.patients"></app-patients>  <app-patient-trustees *ngIf="activated.patientTrustees"></app-patient-trustees>  <app-smart-devices *ngIf="activated.smartDevices"></app-smart-devices>  <app-smart-device-types *ngIf="activated.smartDeviceTypes"></app-smart-device-types>  <app-trustees *ngIf="activated.trustees"></app-trustees></div></div>'
+    var COMPONENTS = [{'name': 'AddMedicineComponent', 'selector': 'app-add-medicine'},{'name': 'AdministratorsComponent', 'selector': 'app-administrators'},{'name': 'AdminPanelComponent', 'selector': 'app-admin-panel'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateAdministratorComponent', 'selector': 'app-create-administrator'},{'name': 'CreateDoctorComponent', 'selector': 'app-create-doctor'},{'name': 'CreateMedicationScheduleComponent', 'selector': 'app-create-medication-schedule'},{'name': 'CreateMedicineComponent', 'selector': 'app-create-medicine'},{'name': 'CreateMessageComponent', 'selector': 'app-create-message'},{'name': 'CreateMessageTypeComponent', 'selector': 'app-create-message-type'},{'name': 'CreatePatientComponent', 'selector': 'app-create-patient'},{'name': 'CreatePatientDoctorComponent', 'selector': 'app-create-patient-doctor'},{'name': 'CreatePatientTrusteeComponent', 'selector': 'app-create-patient-trustee'},{'name': 'CreateScheduleEventComponent', 'selector': 'app-create-schedule-event'},{'name': 'CreateSmartDeviceComponent', 'selector': 'app-create-smart-device'},{'name': 'CreateSmartDeviceTypeComponent', 'selector': 'app-create-smart-device-type'},{'name': 'CreateTrusteeComponent', 'selector': 'app-create-trustee'},{'name': 'DoctorsComponent', 'selector': 'app-doctors'},{'name': 'EditMedicineComponent', 'selector': 'app-edit-medicine'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MedicationSchedulesComponent', 'selector': 'app-medication-schedules'},{'name': 'MedicinesComponent', 'selector': 'app-medicines'},{'name': 'MedicinesViewComponent', 'selector': 'app-medicines-view'},{'name': 'MessagesComponent', 'selector': 'app-messages'},{'name': 'MessagesViewComponent', 'selector': 'app-messages-view'},{'name': 'MessageTypesComponent', 'selector': 'app-message-types'},{'name': 'PatientDoctorsComponent', 'selector': 'app-patient-doctors'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'PatientsViewDoctorComponent', 'selector': 'app-patients-view-doctor'},{'name': 'PatientsViewTrusteeComponent', 'selector': 'app-patients-view-trustee'},{'name': 'PatientTrusteesComponent', 'selector': 'app-patient-trustees'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'PutAdministratorComponent', 'selector': 'app-put-administrator'},{'name': 'PutDoctorComponent', 'selector': 'app-put-doctor'},{'name': 'PutMedicationScheduleComponent', 'selector': 'app-put-medication-schedule'},{'name': 'PutMedicineComponent', 'selector': 'app-put-medicine'},{'name': 'PutMessageComponent', 'selector': 'app-put-message'},{'name': 'PutMessageTypeComponent', 'selector': 'app-put-message-type'},{'name': 'PutPatientComponent', 'selector': 'app-put-patient'},{'name': 'PutSmartDeviceComponent', 'selector': 'app-put-smart-device'},{'name': 'PutSmartDeviceTypeComponent', 'selector': 'app-put-smart-device-type'},{'name': 'PutTrusteeComponent', 'selector': 'app-put-trustee'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RegisterDoctorFormComponent', 'selector': 'app-register-doctor-form'},{'name': 'RegisterPatientFormComponent', 'selector': 'app-register-patient-form'},{'name': 'RegisterTrusteeFormComponent', 'selector': 'app-register-trustee-form'},{'name': 'ScheduleEventComponent', 'selector': 'app-schedule-events'},{'name': 'ScheduleViewComponent', 'selector': 'app-schedule-view'},{'name': 'SmartDevicesComponent', 'selector': 'app-smart-devices'},{'name': 'SmartDeviceTypesComponent', 'selector': 'app-smart-device-types'},{'name': 'StatisticsViewComponent', 'selector': 'app-statistics-view'},{'name': 'TrusteesComponent', 'selector': 'app-trustees'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AdminPanelComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdminPanelComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

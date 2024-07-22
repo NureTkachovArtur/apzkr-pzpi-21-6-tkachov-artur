@@ -2,6 +2,7 @@
 using medireminder.Dto;
 using medireminder.Interfaces;
 using medireminder.Models;
+using medireminder.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,8 +23,20 @@ namespace medireminder.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<PatientDoctor>))]
+        public IActionResult GetPatientDoctors()
+        {
+            var patientDoctors = _patientDoctorRepository.GetPatientDoctors();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(patientDoctors);
+        }
+
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Doctor")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public IActionResult CreatePatientDoctor([FromBody] PatientDoctorDto patientDoctorCreate)
@@ -44,7 +57,7 @@ namespace medireminder.Controllers
             return Ok(new { ok = true });
         }
 
-        [HttpPut("{patientId, doctorId}")]
+        [HttpPut("{patientId}/{doctorId}")]
         [Authorize(Roles = "Administrator")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -72,8 +85,8 @@ namespace medireminder.Controllers
             return Ok(new { ok = true });
         }
 
-        [HttpDelete("{patientId, doctorId}")]
-        [Authorize(Roles = "Administrator")]
+        [HttpDelete("{patientId}/{doctorId}")]
+        [Authorize(Roles = "Administrator,Doctor")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

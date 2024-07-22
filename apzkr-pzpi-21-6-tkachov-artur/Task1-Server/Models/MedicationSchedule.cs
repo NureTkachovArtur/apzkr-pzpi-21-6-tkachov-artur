@@ -9,9 +9,11 @@
         public SmartDevice SmartDevice { get; set; }
         public int MedicineId { get; set; }
         public Medicine Medicine { get; set; }
-        public DateTime MedicationTime { get; set; }
         public DateTime MedicationStartDate { get; set; }
-        public DateTime MedicationEndDate { get; set; }
+        public float DosesPerDay { get; set; }
+        public int EveryNDay { get; set; }
+        public int DaysLeft { get; set; }
         public int MedicationIntervalMinutes { get; set; }
+        public ICollection<ScheduleEvent> ScheduleEvents { get; set; }
     }
 }

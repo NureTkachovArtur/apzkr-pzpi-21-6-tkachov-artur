@@ -1,0 +1,305 @@
+<app-header></app-header>
+
+<div id="content" *ngIf="loaded; else stillLoading" style="margin-bottom: 20px;">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 *ngIf="userRole == 'Patient'">Календар</h2>
+    <h2 *ngIf="userRole != 'Patient'">Календар користувача {{ patient.applicationUser.userName }}</h2>
+    <button
+            #buttonAdd
+            *ngIf="userRole != 'Trustee'"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="buttonAddPressed()"
+            class="btn btn-info">Додати</button>
+  </div>
+  <full-calendar [options]='calendarOptions()'>
+    <ng-template #eventContent let-arg>
+      <b>{{ arg.timeText }}</b>
+      <i>{{ arg.event.title }}</i>
+    </ng-template>
+  </full-calendar>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Створення розкладу</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Ліки</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <select #medicineId="ngModel"
+                      name="gender"
+                      [(ngModel)]="values.medicineId"
+                      id="specializationSelect2"
+                      class="form-control"
+                      required>
+                <option value="" disabled selected>Оберіть ліки</option>
+                <option *ngFor="let medicine of medicines;" value="{{ medicine.medicineId }}">{{ medicine.name }}</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Пристрій</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <select #smartDeviceId="ngModel"
+                      name="gender"
+                      [(ngModel)]="values.smartDeviceId"
+                      id="specializationSelect2"
+                      class="form-control"
+                      required>
+                <option value="" disabled selected>Оберіть пристрій</option>
+                <option *ngFor="let sd of smartDevices;" value="{{ sd.smartDeviceId }}">{{ sd.smartDeviceType.name }}</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Дата першої дози</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input
+                     name="medicationStartDate"
+                     type="datetime-local"
+                     class="form-control"
+                     [(ngModel)]="values.medicationStartDate">
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Кількість доз на день</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input #medicationIntervalMinutes="ngModel"
+                     name="dosesPerDay"
+                     [(ngModel)]="values.dosesPerDay"
+                     type="number"
+                     min="1"
+                     id="middleNameInput2"
+                     class="form-control" />
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Інтервал прийняття пігулок (у хвилинах)</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input #medicationIntervalMinutes="ngModel"
+                     name="age"
+                     [(ngModel)]="values.medicationIntervalMinutes"
+                     type="number"
+                     min="0"
+                     id="middleNameInput2"
+                     class="form-control" />
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Дозування кожні N днів</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input #everyNDay="ngModel"
+                     name="everyNDay"
+                     [(ngModel)]="values.everyNDay"
+                     type="number"
+                     min="0"
+                     id="middleNameInput2"
+                     class="form-control" />
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Дні дозування</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input #daysLeft="ngModel"
+                     name="daysLeft"
+                     [(ngModel)]="values.daysLeft"
+                     type="number"
+                     min="0"
+                     id="middleNameInput2"
+                     class="form-control" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button #closePOSTbutton type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+        <button type="button" (click)="saveSchedulePOST()" class="btn btn-primary">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button
+        #hiddenButton
+        style="display: none"
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal1">Open</button>
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Зміна розкладу</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Ліки</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <select
+                      disabled
+                      #medicineId="ngModel"
+                      name="medicineId"
+                      [(ngModel)]="changes.medicineId"
+                      id="medicineId"
+                      class="form-control"
+                      required>
+                <option value="" disabled selected>Оберіть ліки</option>
+                <option *ngFor="let medicine of medicines;" value="{{ medicine.medicineId }}">{{ medicine.name }}</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Пристрій</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <select
+                      disabled
+                      #smartDeviceId="ngModel"
+                      name="smartDeviceId"
+                      [(ngModel)]="changes.smartDeviceId"
+                      id="smartDeviceId"
+                      class="form-control"
+                      required>
+                <option value="" disabled selected>Оберіть пристрій</option>
+                <option *ngFor="let sd of smartDevices;" value="{{ sd.smartDeviceId }}">{{ sd.smartDeviceType.name }}</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Дата першої дози</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input
+                     disabled
+                     name="medicationStartDate"
+                     type="datetime-local"
+                     class="form-control"
+                     [(ngModel)]="changes.medicationStartDate">
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Кількість доз на день</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input
+                     disabled
+                     #medicationIntervalMinutes="ngModel"
+                     name="dosesPerDay"
+                     [(ngModel)]="changes.dosesPerDay"
+                     type="number"
+                     min="1"
+                     id="middleNameInput2"
+                     class="form-control" />
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Інтервал прийняття пігулок (у хвилинах)</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input
+                     disabled
+                     #medicationIntervalMinutes="ngModel"
+                     name="age"
+                     [(ngModel)]="changes.medicationIntervalMinutes"
+                     type="number"
+                     min="0"
+                     id="middleNameInput2"
+                     class="form-control" />
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Дозування кожні N днів</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input
+                     disabled
+                     #everyNDay="ngModel"
+                     name="everyNDay"
+                     [(ngModel)]="changes.everyNDay"
+                     type="number"
+                     min="0"
+                     id="middleNameInput2"
+                     class="form-control" />
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Дні дозування</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <input 
+                     disabled
+                     #daysLeft="ngModel"
+                     name="daysLeft"
+                     [(ngModel)]="changes.daysLeft"
+                     type="number"
+                     min="0"
+                     id="middleNameInput2"
+                     class="form-control" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button data-bs-dismiss="modal" style="margin-right: auto;" type="button" (click)="deleteSchedule(changes.medicationScheduleId)" class="btn btn-danger">Видалити</button>
+        <button
+                *ngIf="userRole == 'Patient'"
+                [disabled]="!selectedToday"
+                (click)="submitDose()"
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal">
+          <i class="fa-regular fa-calendar-check"></i>
+        </button>
+        <button #closePUT type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

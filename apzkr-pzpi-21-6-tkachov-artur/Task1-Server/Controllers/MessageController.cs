@@ -134,7 +134,7 @@ namespace medireminder.Controllers
         }
 
         [HttpDelete("{messageId}")]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator,Doctor,Patient,Trustee")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]

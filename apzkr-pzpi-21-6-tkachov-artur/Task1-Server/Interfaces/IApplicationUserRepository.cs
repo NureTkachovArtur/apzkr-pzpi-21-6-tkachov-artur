@@ -6,8 +6,11 @@ namespace medireminder.Interfaces
 {
     public interface IApplicationUserRepository
     {
+        Task<bool> UserExistsByIdAsync(string id);
+        Task<ApplicationUser> GetUserAsync(string id);
         bool UserExistsById(string id);
         ApplicationUser GetUser(string id);
+        ICollection<ApplicationUser> GetUsers();
         Task<GeneralResponse> CreateAdministratorAccount(ApplicationUserDto userDto);
         Task<GeneralResponse> CreateTrusteeAccount(TrusteeUserDto userDto);
         Task<GeneralResponse> CreateDoctorAccount(DoctorUserDto userDto);

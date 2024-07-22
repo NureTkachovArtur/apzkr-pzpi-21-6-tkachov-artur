@@ -6,6 +6,7 @@ namespace medireminder.Interfaces
     {
         ICollection<Doctor> GetDoctors();
         Doctor GetDoctor(int doctorId);
+        Doctor GetDoctorByUID(string uid);
         Doctor GetDoctorByEmail(string email);
         ICollection<Patient> GetPatientsByDoctor(int doctorId);
         bool DoctorExists(int doctorId);

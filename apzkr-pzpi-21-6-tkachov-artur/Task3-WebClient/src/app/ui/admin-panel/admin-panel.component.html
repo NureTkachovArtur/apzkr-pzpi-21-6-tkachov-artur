@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<div class="sidebar">
+  <a (click)="activateAdministrators()" id="first-element">Адміністратори</a>
+  <a (click)="activateDoctors()">Лікарі</a>
+  <a (click)="activateMedicationSchedules()">Розклади</a>
+  <a (click)="activateScheduleEvents()">Події</a>
+  <a (click)="activateMedicines()">Ліки</a>
+  <a (click)="activateMessages()">Повідомлення</a>
+  <a (click)="activateMessageTypes()">Типи повідомлень</a>
+  <a (click)="activatePatientDoctors()">Пацієнт-Лікар</a>
+  <a (click)="activatePatients()">Пацієнти</a>
+  <a (click)="activatePatientTrustees()">Пацієнт-Опікун</a>
+  <a (click)="activateSmartDevices()">Розумні пристрої</a>
+  <a (click)="activateSmartDeviceTypes()">Типи пристроїв</a>
+  <a (click)="activateTrustees()" id="last-element">Опікуни</a>
+</div>
+
+<div class="content">
+  <app-administrators *ngIf="activated.administrators"></app-administrators>
+  <app-doctors *ngIf="activated.doctors"></app-doctors>
+  <app-medication-schedules *ngIf="activated.medicationSchedules"></app-medication-schedules>
+  <app-schedule-events *ngIf="activated.scheduleEvents"></app-schedule-events>
+  <app-medicines *ngIf="activated.medicines"></app-medicines>
+  <app-messages *ngIf="activated.messages"></app-messages>
+  <app-message-types *ngIf="activated.messageTypes"></app-message-types>
+  <app-patient-doctors *ngIf="activated.patientDoctors"></app-patient-doctors>
+  <app-patients *ngIf="activated.patients"></app-patients>
+  <app-patient-trustees *ngIf="activated.patientTrustees"></app-patient-trustees>
+  <app-smart-devices *ngIf="activated.smartDevices"></app-smart-devices>
+  <app-smart-device-types *ngIf="activated.smartDeviceTypes"></app-smart-device-types>
+  <app-trustees *ngIf="activated.trustees"></app-trustees>
+</div>

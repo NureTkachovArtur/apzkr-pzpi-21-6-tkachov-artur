@@ -41,11 +41,11 @@ namespace medireminder.Repository
             return _context.MedicationSchedules.Where(e => e.PatientId == patientId).ToList();
         }
 
-        public ICollection<MedicationStatistics> GetMedicationStatisticsByPatient(int patientId)
+        public ICollection<ScheduleEvent> GetScheduleEventsByPatient(int patientId)
         {
-            return _context.MedicationStatistics
-                .Where(e => e.PatientId == patientId)
-                .Include(e => e.Medicine)
+            return _context.ScheduleEvents
+                .Include(e => e.MedicationSchedule)
+                .Where(e => e.MedicationSchedule.PatientId == patientId)
                 .ToList();
         }
 
@@ -88,11 +88,27 @@ namespace medireminder.Repository
                 .FirstOrDefault();
         }
 
+        public Patient GetPatientByUID(string uid)
+        {
+            return _context.Patients
+                .Include(e => e.ApplicationUser)
+                .Where(e => e.ApplicationUser.Id == uid)
+                .FirstOrDefault();
+        }
+
         public ICollection<Patient> GetPatients()
         {
             return _context.Patients
                 .Include(e => e.ApplicationUser)
                 .OrderBy(e => e.PatientId)
+                .ToList();
+        }
+
+        public ICollection<SmartDevice> GetSmartDevicesByPatient(int patientId)
+        {
+            return _context.SmartDevices
+                .Where(e => e.PatientId == patientId)
+                .Include(e => e.SmartDeviceType)
                 .ToList();
         }
 

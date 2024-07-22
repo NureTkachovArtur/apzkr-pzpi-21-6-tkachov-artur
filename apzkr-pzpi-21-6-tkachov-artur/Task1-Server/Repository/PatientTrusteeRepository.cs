@@ -32,6 +32,11 @@ namespace medireminder.Repository
                 .FirstOrDefault();
         }
 
+        public ICollection<PatientTrustee> GetPatientTrustees()
+        {
+            return _context.PatientTrustees.ToList();
+        }
+
         public bool PatientTrusteeExists(int patientId, int trusteeId)
         {
             return _context.PatientTrustees.Any(e => e.PatientId == patientId && e.TrusteeId == trusteeId);
